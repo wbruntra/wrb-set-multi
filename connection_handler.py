@@ -45,7 +45,8 @@ class ChannelDisconnectHandler(webapp2.RequestHandler):
     def post(self):
         player_id = self.request.get('from')
         host = OnlineHost.get_by_key_name(player_id)
-        host.delete()
+        if host:
+          host.delete()
 
 app = webapp2.WSGIApplication([
     ('/_ah/channel/connected/', ChannelConnectHandler),
