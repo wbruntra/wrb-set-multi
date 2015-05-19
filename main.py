@@ -45,6 +45,7 @@ class Score(ndb.Model):
 class Game(db.Model):
     host_token = db.StringProperty()
     player_tokens = db.StringListProperty()
+    player_nicks = db.StringListProperty()
     num_players = db.IntegerProperty()
 
 class OnlineHost(db.Model):
@@ -108,6 +109,7 @@ class MultiHandler(Handler):
           game = Game(key_name = game_key,
                       host_token = token,
                       num_players = 1)
+          game.player_nicks.append(nickname)
           game.put()
           host = OnlineHost(key_name = player_id,
                             host_nick=nickname,
@@ -147,6 +149,7 @@ class ClientHandler(Handler):
         player_list = game.player_tokens
         player_list += [token]
         game.num_players += 1
+        game.player_nicks.append(player)
         game.put()
         template_vars = {'token':token,
                         'game_key':game_key,
@@ -181,6 +184,9 @@ class JoinHandler(Handler):
         game = Game.get_by_key_name(game_key)
         if not game:
           error = "Game does not exist!"
+          self.render('join.html',game_key=game_key,error=error)
+        elif nickname in game.player_nicks:
+          error = "Nickname already taken!"
           self.render('join.html',game_key=game_key,error=error)
         else:
           self.redirect('/client?g='+game_key)
