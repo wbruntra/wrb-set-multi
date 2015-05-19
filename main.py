@@ -68,6 +68,7 @@ class HostHandler(Handler):
     def get(self):
         game_key = str(random.randint(1001,9999))
         self.response.set_cookie('game_key',game_key)
+        self.response.set_cookie('nickname','')
         player_id = str(uuid.uuid4()).replace('-','')
         template_vars = {'game_key':game_key}
         self.render('host.html',**template_vars)
