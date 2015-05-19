@@ -13,6 +13,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 import time
+import datetime
 
 import uuid
 
@@ -44,6 +45,12 @@ class Score(ndb.Model):
 class Game(db.Model):
     host_token = db.StringProperty()
     player_tokens = db.StringListProperty()
+    num_players = db.IntegerProperty()
+
+class OnlineHost(db.Model):
+    host_nick = db.StringProperty()
+    game_code = db.StringProperty()
+    created = db.DateTimeProperty(auto_now_add=True)
     
 def render_str(template, **params):
   t = jinja_env.get_template(template)
@@ -67,12 +74,27 @@ class HostHandler(Handler):
     def post(self):
         nickname = self.request.get('nickname')
         self.response.set_cookie('nickname',nickname)
-        self.redirect('/')
+        self.redirect('/multi')
         
 class MainHandler(Handler):
   def get(self):
     self.render('index.html')
-        
+
+class ActiveHandler(Handler):
+  def get(self):
+    hosts_query = db.Query(OnlineHost)
+    hosts = hosts_query.fetch(100)
+    active_hosts = []
+    for host in hosts:
+      if ((datetime.datetime.now() - host.created).seconds < 600):
+        active_hosts.append(host)
+    self.render('active.html',hosts=active_hosts)
+
+class ClearHandler(Handler):
+  def get(self):
+    hosts = OnlineHost.all()
+    db.delete(hosts)
+    
 class MultiHandler(Handler):
     def get(self):
         game_key = self.request.cookies.get('game_key')
@@ -83,8 +105,13 @@ class MultiHandler(Handler):
           player_id = str(uuid.uuid4()).replace('-','')
           token = channel.create_channel(player_id)
           game = Game(key_name = game_key,
-                      host_token = token)
+                      host_token = token,
+                      num_players = 1)
           game.put()
+          host = OnlineHost(key_name = player_id,
+                            host_nick=nickname,
+                            game_code = game_key)
+          host.put()
           template_vars = {'player':nickname,
                           'game_key':game_key,
                           'token':token}
@@ -118,6 +145,7 @@ class ClientHandler(Handler):
         token = channel.create_channel(player_id)
         player_list = game.player_tokens
         player_list += [token]
+        game.num_players += 1
         game.put()
         template_vars = {'token':token,
                         'game_key':game_key,
@@ -223,6 +251,8 @@ class RulesHandler(Handler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/active',ActiveHandler),
+    ('/clear',ClearHandler),
     ('/multi', MultiHandler),
     ('/solo',SoloHandler),
     ('/host',HostHandler),

@@ -11,18 +11,15 @@
   <body>
     <div id="pregame">
       <div id="pregame-content">
-        <p>Welcome to the amazing four-dimensional matching game, {{ player }}!</p>
-        <p><a href="/host">Change name</a></p>
-        <p>Send people <a href="/join?g={{ game_key }}">this</a> link in order to play together!</p>
+        <p>Welcome to the amazing four-dimensional matching game, {{ player }}! (<a href="/host">change</a>)</p>
+        <p>Send your friends <a href="/join?g={{ game_key }}">this</a> link!</p>
         <p>(http://wrb-set-multi.appspot.com/join?g={{ game_key }})</p>
         <p>Or give them this code: {{ game_key }} </p>
         <button id="start-button" onclick="">Start the Game</button>
 <!--        <button id="add-computer" onclick="">Add Computer</button>-->
         <div id="pregame-bottom">
-          <p>scoring: you get one point for every set</p>
           <p><strong>keyboard tips</strong></p>
-          <p>hit 's' to call out your set<br>'r' reshuffles the deck</p>
-          <p><a class="button" href="/rules">How to Play</a><a class="button" href="/scores">See High Scores</a></p>
+          <p>hit 's' to call out your set,'r' reshuffles the deck</p>
           <h3>Players so far:</h3>
           <ul id="pregame-players">
             <li>{{ player }} (you)</li>

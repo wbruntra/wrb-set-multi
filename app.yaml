@@ -4,6 +4,9 @@ runtime: python27
 api_version: 1
 threadsafe: yes
 
+inbound_services:
+- channel_presence
+
 handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
@@ -21,6 +24,9 @@ handlers:
 - url: /(.*\.(gif|jpg|js|css))
   static_files: \1
   upload: (.*\.(gif|jpg|js|css))
+
+- url: /_ah/channel/.*
+  script: connection_handler.app
 
 - url: .*
   script: main.app
