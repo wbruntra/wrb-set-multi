@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Set Game</title>
+    <script src='/_ah/channel/jsapi'></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/min-sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="pregame">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game!</p> 
+        <p>Give me your name and hit Create when you are ready to start!</p>
+        <form action="/multi" method="post">
+          Name:<input type="text" name="nickname"><br>
+          <input type="submit" value="Create">
+        </form>
+        <div id="pregame-bottom">
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set, 'g' to lock in your choice<br>'r' reshuffles the deck</p>
+          <p><a class="button" href="/rules">How to Play</a><a class="button" href="/scores">See High Scores</a></p>
+          
+        </div>
+        
+      </div>
+    </div>
+    </body>
+</html>

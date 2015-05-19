@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stretchy Sprites: Cross-browser responsive sprite images</title>
+<style type="text/css">
+
+/*
+Stretchy Sprites by tobyj.net
+Feel free to copy and reuse as you like
+*/
+
+/*Set the max-width to the width of your individual sprites:*/
+.stretchy {display:block; float:left; position:relative; overflow:hidden; max-width:160px;}
+.stretchy .spacer {width: 100%; height: auto;}
+.stretchy .sprite {position:absolute; top:0; left:0; max-width:none; max-height:100%;}
+.stretchy .sprite.s2 {left:-100%;}
+.stretchy .sprite.s3 {left:-200%;}
+.stretchy .sprite.s4 {left:-300%;}
+.stretchy .sprite.s5 {left:-400%;}
+.stretchy .sprite.s6 {left:-500%;}
+
+.stretchy.no-limit {max-width: none;} /*you could also set this to a pixel size, for example 320px, to limit the maximum*/
+.stretchy.no-limit .sprite {min-height: 100%;}
+
+/*END stretchy sprites by tobyj.net*/
+
+/*stuff below here is just for this demo*/
+html, body {font-family: Verdana, Geneva, sans-serif; font-size: 12px;}
+a img {border:0; padding: 0; margin: 0 ; display: block}
+.box {float: left; clear: both; width: 100%; margin: 10px 0; background: #eee;}
+.stretchy {width:35%; margin-right:5%;}
+.text {float: left; width: 55%; margin-right: 5%;}
+.green {color: #060}
+.red {color: #C00}
+ul li {margin: 10px 0;}
+ul li li {margin: 5px 0;}
+
+</style>
+</head>
+<body>
+<h1>Stretchy Sprites</h1>
+<h3>Cross-browser, responsive resizing/stretching of CSS sprite images</h3>
+<p>This method does <strong>not</strong> rely on <code class="red">background-size</code>, so it will work in older browsers.</p>
+<p>Try &lt;&lt;&lt; resizing &gt;&gt;&gt; your browser window to see the sprites resize.<br />Read the <a href="#notes">notes</a> and view source to see how it works.<p>
+</p>Here's the <strong>single image</strong> that this demo uses (<em>note</em>: a spacer image is also required):</p>
+<img alt="" src="sprite_800x160.jpg">
+<hr />
+<h2>Demo (resize your browser window):</h2>
+<div class="box">
+    <a class="stretchy" href="#">
+        <img class="spacer" alt="icon" src="spacer.png">
+        <img class="sprite" alt="" src="sprite_800x160.jpg">
+    </a>
+    <div class="text">
+    	<p>Example Sprite 1<br /><code><span class="green">.sprite</span>{<span class="red">left:0;</span>}</code></p>
+    </div>
+</div>
+
+<div class="box">
+    <a class="stretchy no-limit" href="#">
+        <img class="spacer" alt="icon" src="spacer.png">
+        <img class="sprite s2" alt="" src="sprite_800x160.jpg">
+    </a>
+    <div class="text">
+    	<p>Example Sprite 2<br /><code><span class="green">.sprite.s2</span>{<span class="red">left:-100%;</span>}</code>
+        <br /><br /><code class="green">.no-limit</code> class allows stretching over natural size</p>
+    </div>
+</div>
+
+<div class="box">
+    <a class="stretchy" href="#">
+        <img class="spacer" alt="icon" src="spacer.png">
+        <img class="sprite s3" alt="" src="sprite_800x160.jpg">
+    </a>
+    <div class="text">
+    	<p>Example Sprite 3<br /><code><span class="green">.sprite.s3</span>{<span class="red">left:-200%;</span>}</code>
+    </div>
+</div>
+
+<div class="box">
+    <a class="stretchy" href="#">
+        <img class="spacer" alt="icon" src="spacer.png">
+        <img class="sprite s4" alt="" src="sprite_800x160.jpg">
+    </a>
+    <div class="text">
+    	<p>Example Sprite 4<br /><code><span class="green">.sprite.s4</span>{<span class="red">left:-300%;</span>}</code></p>
+    </div>
+</div>
+
+<div class="box">
+    <a class="stretchy" href="#">
+        <img class="spacer" alt="icon" src="spacer.png">
+        <img class="sprite s5" alt="" src="sprite_800x160.jpg">
+    </a>
+    <div class="text">
+    	<p>Example Sprite 5<br /><code><span class="green">.sprite.s5</span>{<span class="red">left:-400%;</span>}</code></p>
+    </div>
+</div>
+
+<div class="box">
+    <a class="stretchy no-limit" href="#">
+        <img class="spacer" alt="icon" src="spacer.png">
+        <img class="sprite s6" alt="" src="sprite_800x160.jpg">
+    </a>
+    <div class="text">
+    	<p>Example Sprite 6<br /><code><span class="green">.sprite.s6</span>{<span class="red">left:-500%;</span>}</code>
+        <br /><br /><code class="green">.no-limit</code> class allows stretching over natural size</p>
+    </div>
+</div>
+
+<h3><a name="notes"></a>Notes</h3>
+<ul>
+	<li>This example uses an image that is 800 wide x 160 high. This image contains 6 equal size sprites (160x160 each).
+    <li>If your sprite size is different all you need to change is the <code class="red">max-width</code> property of <code class="green">.sprite</code> to match the individual sprite width.</li>
+	<li>To set the visible sprite: Set the <code class="red">left</code> value of <code class="green">.sprite</code> to:
+    	<ul>
+        	<li><code class="red">0</code> = 1st sprite</li>
+            <li><code class="red">-100%</code> = 2nd sprite</li>
+            <li><code class="red">-200%</code> = 3rd sprite</li>
+            <li>etc...</li>
+        </ul>
+        Easy!
+    </li>
+	<li>If you want images to stretch larger than their natural size: Add the class <code class="green">.no-limit</code> to <code class="green">.stretchy</code>.<br />
+    This removes <code class="red">max-width:160px</code> from <code class="green">.stretchy</code> and add <code class="red">min-height:100%</code> to <code class="green">.sprite</code><br/>
+    Alternatively you could set a larger max-width using a px value, e.g. 300px</li>
+	<li>The spacer image can be any size, as long as it is propotional to the dimensions of the individual sprites.</li>
+</ul>
+
+<p style="padding-top: 30px; text-align: center; font-family: Arial, Helvetica, sans-serif; color: #333; font-size: 11px;">Copyright &copy; 2012 <a href="http://tobyj.net">tobyj.net</a> All rights reserved.</p>
+
+</body>
+</html>

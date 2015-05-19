@@ -1,0 +1,154 @@
+#middle {
+  width:80%;
+}
+
+table tr {
+  float:left;
+  clear:both;
+  width:100%;
+  margin:5px 0;
+}
+
+
+#board td {
+  padding: 0 1%;
+  border-width:2px;
+  border-style: solid;
+  border-radius: 5px;
+  background-color:#480505;
+}
+
+#board {
+  float: left;
+  border-width: 2px;
+  border-color: #000;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 4px;
+  padding: 0;
+  background-color: #a93232;
+  clear:both;
+  width:100%;
+  margin:10px;
+  max-width: 800px;
+}
+
+#board.active {
+  border-color:#193dff;
+}
+
+#board td.on {
+  border-color:#ee0;
+  background-color:#ee0;
+}
+
+#board.highlighted td img { 
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px); 
+}
+
+#board.highlighted td.on img { 
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0); 
+}
+
+.stretchy {
+  display:block;
+  float:left;
+  position:relative;
+  overflow:hidden;
+  max-width:120px;
+}
+.stretchy .spacer {
+  width: 100%;
+  height: auto;
+}
+
+.stretchy .sprite {
+  position:absolute;
+  top:0;
+  left:0;
+  max-width:none;
+  max-height:100%;
+}
+
+.stretchy.no-limit {
+  max-width: none;
+} /*you could also set this to a pixel size, for example 320px, to limit the maximum*/
+.stretchy.no-limit .sprite {
+  min-height: 100%;
+}
+
+/*END stretchy sprites by tobyj.net*/
+/*stuff below here is just for this demo*/
+
+#middle a {
+  pointer-events:none;
+}
+
+a img {
+  border:0;
+  padding: 0;
+  margin: 0 ;
+  display: block;
+}
+
+a.on {
+  background-color:green;
+}
+
+.box {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 10px 0;
+  background: #eee;
+}
+.stretchy {
+  width:100%;
+  margin-right:5%;
+}
+
+table {
+  border-spacing:10px 5px;
+  float:left;
+}
+
+.one.empty {
+  left:0%;
+}
+
+.one.striped {
+  left:-100%
+}
+
+.one.solid {
+  left: -200%
+}
+
+.two.empty {
+  left:-300%
+}
+.two.striped {
+  left:-400%
+}
+.two.solid {
+  left:-500%
+}
+
+.three.empty {
+  left:-600%;
+}
+
+.three.striped {
+  left:-700%;
+}
+.three.solid {
+  left:-800%;
+}

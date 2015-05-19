@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Set Game</title>
+    <script src='/_ah/channel/jsapi'></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/min-sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="pregame">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game, {{ player }}!</p>
+        <p><a href="/host">Change name</a></p>
+        <p>Send people <a href="/join?g={{ game_key }}">this</a> link in order to play together!</p>
+        <p>(http://wrb-set-multi.appspot.com/join?g={{ game_key }})</p>
+        <p>Or give them this code: {{ game_key }} </p>
+        <button id="start-button" onclick="">Start the Game</button>
+<!--        <button id="add-computer" onclick="">Add Computer</button>-->
+        <div id="pregame-bottom">
+          <p>scoring: you get one point for every set</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set<br>'r' reshuffles the deck</p>
+          <p><a class="button" href="/rules">How to Play</a><a class="button" href="/scores">See High Scores</a></p>
+          <h3>Players so far:</h3>
+          <ul id="pregame-players">
+            <li>{{ player }} (you)</li>
+          </ul>
+        </div>  
+        </div>
+        
+      </div>
+    </div>
+    <div id="topbar">
+      <div id="timer"></div>
+      <div id="reminder"><p>Hit &quot;s&quot; when you see a set!</p></div>
+      <div id="declaration"><p>Somebody called SET!</p></div>
+      <div id="countdown"></div>
+    </div>
+    <div id="middle">
+      <div id="board">
+      </div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="">Go!</button>
+        <button id="declare-set" type="button" onclick="">SET!</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+      <div id="game-info">
+        <div id="all-scores">
+        </div><br>
+        <div>
+        <span id="remaining"></span>
+        <span id="sets-on-board"></span>
+        </div>
+      </div>
+      <div id="bottom">
+        <button type="button" id="reshuffle" onclick="">Reshuffle</button>
+        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>
+      </div>
+    </div>
+        <div id="game-data" style="display: none;">
+        <input id="my-token" value="{{ token }}">
+        <input id="game-key" value="{{ game_key }}">
+        <input id="player-name" value="{{ player }}">
+    </div>
+    <script src="/js/host.js"></script>
+<!--    <script src="/js/images.js"></script>-->
+  </body> 
+</html>

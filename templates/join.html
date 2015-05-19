@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Set Game</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/min-sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>    
+      <div id="pregame">
+        <div id="pregame-content">
+          <div id="join-page">
+        <p>Welcome to the amazing four-dimensional matching game!</p>
+        <p>You will join a game!</p>
+        <form action="/join" method="post">
+          Your Name:<input type="text" name="nickname"><br>
+          Game Code: <input type="text" name="game-key" value="{{ game_key }}"><br><span class="error">{{ error }}</span><br>
+          <input type="submit" value="Join">
+        </form>
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set</p>
+        </div>
+        </div>
+    </div>
+  </body>
+</html>

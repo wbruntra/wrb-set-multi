@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>My Set Game</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="pregame" style="display: none;">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game!</p>
+        <span>Easy<input id="difficulty" type="range" min="6" max="24">Hard</span><br>
+        <p>First to get 9 points is the winner, or play to the bitter end!</p>
+        <span>First to 9<input id="gametype" type="range" min="0" max="1" value="0">Bitter End</span><br>
+        <button id="start-button" onclick="">Start the Game</button>
+        <div id="pregame-bottom">
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set, 'g' to lock in your choice<br>'r' reshuffles the deck</p>
+          <p><a class="button" href="/rules">How to Play</a><a class="button" href="/scores">See High Scores</a></p>
+        </div>
+      </div>
+    </div>
+    <div id="topbar">
+      <div id="timer">Time: 2:24</div>
+      <div id="reminder">
+        <p>Hit "s" when you see a set!</p>
+      </div>
+      <div id="declaration" style="display: none;">
+        <p>Hit "g" to lock in!</p>
+      </div>
+      <div id="countdown"></div>
+    </div>
+    <div id="middle" style="display: block;">
+      <div id="board" class="highlighted">
+        <table>
+          <tbody>
+            <tr>
+              <td id="A1">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c0221" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="B1">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c0022" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="C1">
+                <div class="stretchy no-limit on"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2000" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="D1">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c0102" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+            </tr>
+            <tr>
+              <td id="A2">
+                <div class="stretchy no-limit on"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2021" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="B2">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2101" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="C2">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2112" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="D2">
+                <div class="stretchy no-limit on"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2012" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+            </tr>
+            <tr>
+              <td id="A3">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2222" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="B3">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c1121" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="C3">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c2010" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+              <td id="D3">
+                <div class="stretchy no-limit"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite" id="c0201" src="/img/bigpic.png" alt="cards"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="" style="display: none;">Go!</button>
+        <button id="declare-set" type="button" onclick="">SET!</button>
+        <button id="score-info" type="button" onclick="">Score: 0</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+      <div id="game-info">
+        <span id="your-score">Your Points: 0</span>
+        <span id="opponent-score">Opponent Points: 1</span><br>
+        <span id="remaining">Cards remaining: 78</span>
+        <span id="sets-on-board">Sets on board: 2</span>
+      </div>
+      <div id="bottom">
+        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>
+      </div>
+    </div>
+    <div id="overlay" style="display: block;">
+      <h1>OH NO!</h1>
+    </div>
+    <!--    <script src="/js/images.js"></script>-->
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>High Scores</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/scores.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="top">
+        <h2>High Scores</h2>
+    </div>
+    <div id="main-table">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Score</th> 
+          <th>Date</th>
+        </tr>
+        {% for score in scores %}
+        <tr><td>{{score.player|truncate(16,True)}}</td> 
+          <td>{{score.score}}</td>
+          <td>{{ score.date.strftime("%b %d, %Y") }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div id="bottom">
+        <a href="/">Back to Game</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+#pregame {
+  height:100%;
+  width:100%;
+  background: #fff;
+  position: absolute;
+  top:0;
+  left:0;
+  text-align:center;
+  align-content:center;
+}
+
+#pregame-content {
+  width:80%;
+  border: 3px;
+  border-style: solid;
+}
+
+#pregame input {
+  margin: 0 20px;
+}
+
+#pregame button, #pregame a.button, #pregame input[type=submit] {
+  padding: 7px 10px ;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+#pregame a.button {
+  text-decoration: none;
+  background-color: #a93232;
+  border: none;
+  margin-right:15px;
+}
+
+#pregame ul {
+  list-style-type:none;
+}
+
+body {
+  width: 75%;
+  font-family: Lato;
+  font-size: 1.25em;
+  background: #588c7e;
+}
+
+#countdown {
+  text-align:center;
+  width: 60%;
+}
+
+h1 {
+  position:absolute;
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  font-size: 225%;
+  background-color:#f2f2f2;
+  width:25%;
+  padding:30px;
+  border-radius:15px;
+  border-color:gray;
+  border-style:solid;
+}
+
+#controls {
+  width:0;
+}
+
+#overlay, #name-prompt {
+  opacity:.6;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.2);
+  color: #000;
+  position: absolute;
+  top:0;
+  left:0;
+  text-align: center;
+}
+
+#name-prompt {
+  z-index: 1;
+  opacity:1;
+  background:#588c7e;
+}
+
+#name-prompt div {
+  position:absolute;
+  top:30%;
+  left:20%;
+  background-color: #245246;
+  border-radius: 10px;
+  padding: 20px;
+  color: rgb(39, 8, 4);
+  border-style: solid;
+}
+
+#overlay img {
+  margin-top:  10%;
+  padding: 5px;
+}
+
+button, div#timer, #score-info {
+  padding: 7px 10px ;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+#name-prompt p {
+  font-weight:bold;
+}
+
+#name-prompt button  {
+  margin: 0 10px;
+}
+
+#name-prompt input
+ {
+   height:30px;
+   margin:0 20px;
+}
+
+#score-info {
+  font-size:.8em;
+  color:#222;
+  width:120px;
+}
+
+#game-info, #replay, #reshuffle {
+  margin:5px 30px;
+  float: left;
+  width: 400px;
+  font-size: .75em;
+  background-color: #f2e394;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  border-width: 1px;
+}
+
+
+#game-info span, #replay {
+  line-height: 1.2em;
+  float: left;
+  width: 47%;
+  padding: 1.5%;
+}
+
+#replay {
+  width:20%;
+  float:right;
+  font-weight:bold;
+  background-color:#c78732;
+}
+
+#reshuffle {
+  width:20%;
+  font-weight:bold;
+  background-color:#c78732;
+}
+
+#topbar {
+  overflow:hidden;
+  width:100%;
+  height:50px;
+}
+
+#topbar div{
+  margin:5px 30px;
+  padding: 7px 10px ;
+  color: #000;
+  float: left;
+  font-size: .8em;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  border: 1px solid #000;
+  border-width: 1px 1px 3px;
+  height:20px;
+}
+
+div#timer {
+  margin:5px 30px;
+  width: 120px;
+  color: #000;
+  background-color:#d96459;
+  box-shadow:none;
+  border-color: #000;
+}
+
+div#reminder, div#declaration{
+  height:42px;
+  border: 1px;
+  border-style:solid;
+  padding: 0;
+  font-size:1.1em;
+  color:#222;
+  background-color:#d96459;
+  font-weight: bold;
+}
+
+#reminder p, #declaration p {
+  margin: auto;
+  padding:10px;
+  text-align: center;
+}
+
+#countdown {
+  background-color:#d96459;
+  float: left;
+  width: 10%;
+  font-size:.9em;
+  display:none;
+}
+
+#countdown.running, #declaration.running {
+  display:block;
+}
+
+#join-page input {
+  margin-top: 20px;
+}
+
+.error{
+  color:red;
+}

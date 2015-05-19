@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Set Game</title>
+    <script src='/_ah/channel/jsapi'></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/min-sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="pregame">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game, {{ player }}!</p>
+          <p>Getting ready to start game #{{ game_key }}</p>
+        <p>Waiting for the board to be created!</p>
+          <p>Waiting for the host!</p>
+          <p>rules: you get one point for every set<br>
+          make a false call, you must wait to try again
+        </p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set</p>
+        </div>
+        <button id="start-button" style="display:none"></button>
+      </div>
+    </div>
+    <div id="topbar">
+      <div id="timer"></div>
+      <div id="reminder"><p>Hit &quot;s&quot; when you see a set!</p></div>
+      <div id="declaration">Somebody is declaring!</div>
+      <div id="countdown"></div>
+    </div>
+    <div id="middle">
+      <div id="board">
+      </div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="">Go!</button>
+        <button id="declare-set" type="button" onclick="">SET!</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+    <div id="game-info">
+        <div id="all-scores">
+        </div>
+        <span id="remaining"></span>
+        <span id="sets-on-board"></span>
+      </div>
+      <div id="bottom">
+<!--        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>-->
+      </div>
+    </div>
+    <div id="game-data" style="display: none;">
+        <input id="my-token" value="{{ token }}">
+        <input id="game-key" value="{{ game_key }}">
+        <input id="player-name" value="{{ player }}">
+    </div>
+<!--    <script>var lowScore = {{ lowest_score }}</script>-->
+    <script src="/js/client.js"></script>
+<!--    <script src="/js/images.js"></script>-->
+  </body> 
+</html>
