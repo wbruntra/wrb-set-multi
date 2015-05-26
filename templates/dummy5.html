@@ -1,0 +1,84 @@
+<html><head>
+    <title>My Set Game</title>
+    <script src="/_ah/channel/jsapi"></script><style type="text/css"></style>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/style-2.css">
+    <link rel="stylesheet" href="/css/min-sprites.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div id="pregame" style="display: none;">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game, Jamie! (<a href="/host">change</a>)</p>
+        <p>Send your friends <a href="/join?g=6070">this</a> link!</p>
+        <p>(http://wrb-set-multi.appspot.com/join?g=6070)</p>
+        <p>Or give them this code: 6070 </p>
+        <button id="start-button" onclick="">Start the Game</button>
+<!--        <button id="add-computer" onclick="">Add Computer</button>-->
+        <div id="pregame-bottom">
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set,'r' reshuffles the deck</p>
+          <h3>Players so far:</h3>
+          <ul id="pregame-players">
+            <li>Jamie (you)</li>
+          <li>Jose</li></ul>
+        </div>  
+        </div>
+        
+      </div>
+    
+  <div id="colOne">
+    <div id="topbar">
+      <div id="timer">Time: 3:08</div>
+      <div id="reminder" style="display: none;"><p>Hit "s" when you see a set!</p></div>
+      <div id="declaration" class="running" style="display: block;"><p>Somebody called SET!</p></div>
+      <div id="countdown" class="running">1</div>
+    </div>
+    <div id="middle" style="display: block;">
+      <div id="board" class="active">
+      <table><tbody><tr><td id="A1"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one empty" id="c0020" alt="card" src="/img/20.png"></a></div></td><td id="B1"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three solid" id="c2201" alt="card" src="/img/01.png"></a></div></td><td id="C1" class="on"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1220" alt="card" src="/img/20.png"></a></div></td><td id="D1" class="on"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two striped" id="c1102" alt="card" src="/img/02.png"></a></div></td></tr><tr><td id="A2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2010" alt="card" src="/img/10.png"></a></div></td><td id="B2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three solid" id="c2210" alt="card" src="/img/10.png"></a></div></td><td id="C2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0121" alt="card" src="/img/21.png"></a></div></td><td id="D2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1211" alt="card" src="/img/11.png"></a></div></td></tr><tr><td id="A3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2020" alt="card" src="/img/20.png"></a></div></td><td id="B3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1210" alt="card" src="/img/10.png"></a></div></td><td id="C3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2121" alt="card" src="/img/21.png"></a></div></td><td id="D3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0110" alt="card" src="/img/10.png"></a></div></td></tr></tbody></table></div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="" style="display: none;">Go!</button>
+        <button id="declare-set" type="button" onclick="" style="display: none;">SET!</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+      <div id="game-info">
+        <div id="all-scores">
+        <span id="player-0-score">Jamie: 0</span><span id="player-1-score">Jose: 0</span></div><br>
+        <div>
+        <span id="remaining">Cards remaining: 69</span>
+        <span id="sets-on-board">Sets on board: 2</span>
+        </div>
+      </div>
+      <div id="bottom">
+        <button type="button" id="reshuffle" onclick="">Reshuffle</button>
+        <div id="play-again"><button type="button" id="replay" onclick="" style="display: none;">Restart!</button></div>
+      </div>
+    </div>
+    </div>
+      <div id="colTwo" style="display: block;"><p>Hello world!</p>
+      <p>Tom found:</p>
+      <div class="message">
+      <div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1201" alt="card" src="/img/01.png"></a></div>
+      <div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two striped" id="c1111" alt="card" src="/img/11.png"></a></div>
+      <div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2001" alt="card" src="/img/01.png"></a></div></div>
+      <p><span class="chatter-name">Bill</span>: Hello, world!</p>
+      <form id="chat-msg" action="javascript:void(0);" autocomplete="off" _lpchecked="1">
+        <input id="my-msg" type="text" name="chat">
+        <input type="submit" hidden="">
+      </form>
+    <p><span class="chatter-name">Jamie</span>: hey man</p><p><span class="chatter-name">Jose</span>: what's up?</p></div>
+      <script>
+          soloMatch = false;
+          myName = "Jamie";
+          game_key = "6070";
+          token = "bdcf498de805042d3c1ed2ef8639c771-channel-1739532685-1432682724-afcb4d9c6d4f4edfb63a138979f1ccb0";
+          isHost = ("yes"=="yes");
+    </script>
+<!--    <script src="/js/common.js"></script><div id="overlay" style="display: none;"></div>
+    <script src="/js/host-new.js"></script>
+    <script src="/js/channel.js"></script>-->
+<!--    <script src="/js/images.js"></script>-->
+   
+<script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i; } else { d.textContent=i; } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>

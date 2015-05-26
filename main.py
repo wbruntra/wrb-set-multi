@@ -154,7 +154,8 @@ class ClientHandler(Handler):
         game.put()
         template_vars = {'token':token,
                         'game_key':game_key,
-                        'player':player}
+                        'player':player,
+                        'host':'no'}
         self.render('client.html',**template_vars)
 
 class MoveHandler(Handler):
@@ -209,7 +210,23 @@ class BroadcastHandler(Handler):
         channel_msg = json.dumps(msg)
         for token in tokens:
             channel.send_message(token, channel_msg)
-        
+ 
+class ChatHandler(Handler):
+    def post(self):
+        game_key = self.request.get('g')
+        chatter = self.request.get('chatter')
+        chat = self.request.get('chat')
+        msg = {'action':'chat',
+               'sender':chatter,
+               'chat':chat}
+        channel_msg = json.dumps(msg)
+        game = Game.get_by_key_name(game_key)
+        tokens = game.player_tokens
+        host_token = game.host_token
+        for token in tokens:
+            channel.send_message(token,channel_msg)
+        channel.send_message(host_token,channel_msg)
+
 class OpenHandler(Handler):
     def post(self):
       game_key = self.request.get('g')
@@ -259,11 +276,12 @@ class RulesHandler(Handler):
 
 class DummyHandler(Handler):
     def get(self):
-        self.render('dummy4.html')
+        self.render('dummy5.html')
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/active',ActiveHandler),
+    ('/chat',ChatHandler),
     ('/clear',ClearHandler),
     ('/multi', MultiHandler),
     ('/solo',SoloHandler),

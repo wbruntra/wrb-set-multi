@@ -659,27 +659,30 @@ function failedFind() {
 
 var $setButton = $('#declare-set');
 $setButton.hide();
+
 $setButton.on(myDown,function (e) {
   e.stopPropagation();
   e.preventDefault();
   attemptDeclare();
 });
 
-$("body").keydown(function(e) {
-  if (e.which == 83) {
-    declarePress();
-  }
-  if (e.which == 13 && declared) {
-    $submitButton.trigger(myDown);
-  }
-  if (e.which == 71 && declared) {
-    $submitButton.trigger(myDown);
-  }
-  if (e.which == 82 && declared == false && gamePaused == false) {
-    populateBoard();
-    displayInfo();
-  }
-});
+function enableKeys() {
+  $("body").keydown(function(e) {
+    if (e.which == 83) {
+      declarePress();
+    }
+    if (e.which == 13 && declared) {
+      $submitButton.trigger(myDown);
+    }
+    if (e.which == 71 && declared) {
+      $submitButton.trigger(myDown);
+    }
+    if (e.which == 82 && declared == false && gamePaused == false) {
+      populateBoard();
+      displayInfo();
+    }
+  });
+}
 
 function declarePress() {
   if (declared== false && gamePaused==false) {
@@ -793,3 +796,5 @@ initialize = function() {
 }      
 
 setTimeout(initialize, 100);
+
+enableKeys();

@@ -4,7 +4,7 @@
     <title>My Set Game</title>
     <script src='/_ah/channel/jsapi'></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-2.css">
     <link rel="stylesheet" href="/css/min-sprites.css">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
@@ -29,6 +29,7 @@
         
       </div>
     </div>
+  <div id="colOne">
     <div id="topbar">
       <div id="timer"></div>
       <div id="reminder"><p>Hit &quot;s&quot; when you see a set!</p></div>
@@ -57,10 +58,12 @@
         <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>
       </div>
     </div>
-        <div id="game-data" style="display: none;">
-        <input id="my-token" value="{{ token }}">
-        <input id="game-key" value="{{ game_key }}">
-        <input id="player-name" value="{{ player }}">
+    </div>
+      <div id="colTwo"><p>History</p>
+      <form id="chat-msg" action="javascript:void(0);" autocomplete="off">
+        <input id="my-msg" type="text" name="chat">
+        <input type="submit" hidden>
+      </form>
     </div>
       <script>
           soloMatch = false;
@@ -69,8 +72,9 @@
           token = "{{ token }}";
           isHost = ("{{ host }}"=="yes");
     </script>
-  
-    <script src="/js/host.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/host-new.js"></script>
+    <script src="/js/channel.js"></script>
 <!--    <script src="/js/images.js"></script>-->
   </body> 
 </html>

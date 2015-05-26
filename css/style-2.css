@@ -47,18 +47,20 @@
 }
 
 body {
+  min-height:100%;
   width: 100%;
   margin:0;
   padding:0;
   font-family: Lato;
   font-size: 1.25em;
   background: #588c7e;
+  overflow:auto;
 }
 
 #colOne {
   width:75%;
   float:left;
-  overflow:auto;
+  overflow:hidden;
 }
 
 #middle {
@@ -70,6 +72,11 @@ body {
 }
 
 #colTwo {
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  left:75%;
+  right:0;
   overflow:auto;
   font-size:.7em;
   background-color:beige;
@@ -271,6 +278,7 @@ div#reminder, div#declaration{
 }
 
 #colTwo p {
+  width:100%;
   clear:both;
   margin: 6px 0;
 }
@@ -279,7 +287,7 @@ div#reminder, div#declaration{
   text-indent:1em;
 }
 
-#colTwo .player-name {
+#colTwo .chatter-name {
   font-weight:bold;
 }
 

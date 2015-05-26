@@ -80,7 +80,7 @@ $startButton.on(myDown,function(e) {
   console.log("Game started!");
   makeScoreboard(players);
   guessTime = 36000/parseInt($('#difficulty').val());
-  guessTIme = 8000;
+  guessTime = 8000;
   longGame = ($('#gametype').val() == "1") ? true : false;
   $('#declaration').hide();
   $('#pregame').hide();
