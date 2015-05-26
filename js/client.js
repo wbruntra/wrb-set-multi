@@ -72,16 +72,14 @@ function fill_td(td, cardName) {
 
 function makeScoreboard(players) {
   for (var i=0;i<players.length;i++) {
-    var $p = $('<span id="'+players[i]+'-score">'+players[i]+': 0</span>');
+    var $p = $('<span id="player-'+i+'-score">'+players[i]+': 0</span>');
     $('#all-scores').append($p);
   }
 }
 
 function updateScores() {
-  for (player in scores) {
-    if (scores.hasOwnProperty(player)) {
-      $('#'+player+'-score').text(player+': '+scores[player]);
-    }
+  for (var i=0;i<players.length;i++) {
+    $('#player-'+i+'-score').text(players[i]+': '+scores[players[i]]);
   }
 }
 
@@ -610,7 +608,6 @@ function attemptDeclare() {
 }
 
 function declareSet() {
-  gamePaused = true;
   console.log('set declared');
   $('#reminder').hide();
   $('#board').addClass('active');

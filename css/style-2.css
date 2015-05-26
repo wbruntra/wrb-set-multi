@@ -47,7 +47,9 @@
 }
 
 body {
-  width: 75%;
+  width: 100%;
+  margin:0;
+  padding:0;
   font-family: Lato;
   font-size: 1.25em;
   background: #588c7e;
@@ -59,9 +61,21 @@ body {
   overflow:auto;
 }
 
+#middle {
+  width:100%;
+}
+
+#board {
+  width:100%;
+}
+
 #colTwo {
-  width:25%;
   overflow:auto;
+  font-size:.7em;
+  background-color:beige;
+  min-height:100%;
+  border-left: 2px solid black;
+  padding-left:10px;
 }
 
 #countdown {
@@ -254,4 +268,29 @@ div#reminder, div#declaration{
 
 .error{
   color:red;
+}
+
+#colTwo p {
+  clear:both;
+  margin: 6px 0;
+}
+
+#colTwo div.message {
+  text-indent:1em;
+}
+
+#colTwo .player-name {
+  font-weight:bold;
+}
+
+#colTwo .box {
+  margin: 0 0;
+  width:15%;
+  float:left;
+  clear:none;
+}
+
+#colTwo input {
+  position:fixed;
+  bottom:10px;
 }

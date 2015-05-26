@@ -117,7 +117,8 @@ class MultiHandler(Handler):
           host.put()
           template_vars = {'player':nickname,
                           'game_key':game_key,
-                          'token':token}
+                          'token':token,
+                          'host':'yes'}
           self.render('multi.html',**template_vars)
     def post(self):
         nickname = self.request.get('nickname')
@@ -256,6 +257,10 @@ class RulesHandler(Handler):
     def get(self):
         self.render('rules.html')
 
+class DummyHandler(Handler):
+    def get(self):
+        self.render('dummy4.html')
+        
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/active',ActiveHandler),
@@ -269,5 +274,6 @@ app = webapp2.WSGIApplication([
     ('/opened',OpenHandler),
     ('/client',ClientHandler),
     ('/scores',ScoreHandler),
-    ('/rules',RulesHandler)
+    ('/rules',RulesHandler),
+    ('/dummy',DummyHandler)
 ], debug=True)

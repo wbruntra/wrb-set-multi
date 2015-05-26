@@ -62,6 +62,14 @@
         <input id="game-key" value="{{ game_key }}">
         <input id="player-name" value="{{ player }}">
     </div>
+      <script>
+          soloMatch = false;
+          myName = "{{ player }}";
+          game_key = "{{ game_key }}";
+          token = "{{ token }}";
+          isHost = ("{{ host }}"=="yes");
+    </script>
+  
     <script src="/js/host.js"></script>
 <!--    <script src="/js/images.js"></script>-->
   </body> 

@@ -37,8 +37,9 @@ var computerEnabled = false;
 
 var $startButton = $('#start-button');
 
-var hostName = $('#player-name').val();
-
+if (isHost) {
+  hostName = myName;
+}
 
 var activePlayer = 'none'
 var running = false;
@@ -212,16 +213,14 @@ function maxScore(scores) {
 
 function makeScoreboard(players) {
   for (var i=0;i<players.length;i++) {
-    var $p = $('<span id="'+players[i]+'-score">'+players[i]+': 0</span>');
+    var $p = $('<span id="player-'+i+'-score">'+players[i]+': 0</span>');
     $('#all-scores').append($p);
   }
 }
 
 function updateScores() {
-  for (player in scores) {
-    if (scores.hasOwnProperty(player)) {
-      $('#'+player+'-score').text(player+': '+scores[player]);
-    }
+  for (var i=0;i<players.length;i++) {
+    $('#player-'+i+'-score').text(players[i]+': '+scores[players[i]]);
   }
 }
 
@@ -882,7 +881,7 @@ function sendMessage(action,actor,cards) {
         url: '/broadcast',
         type: 'POST',
         data: {
-            g:$('#game-key').val(),
+            g:game_key,
             action:action,
             state:state,
             cards:cards,
@@ -944,7 +943,6 @@ onMessage = function(m) {
 }
 
 openChannel = function() {
-  var token = $('#my-token').val();
   var channel = new goog.appengine.Channel(token);
   var handler = {
     'onopen': onOpened,
@@ -963,3 +961,12 @@ initialize = function() {
 
 setTimeout(initialize, 100);
 
+$('#chat-msg').submit(function(){
+  var message = $('#my-msg').val();
+  
+});
+
+function addChat(chatter,message) {
+  $newChat = $('p');
+  $newChat.html('<span class="chatter-name">'+chatter+'</span>: '+message);
+}
