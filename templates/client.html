@@ -54,11 +54,6 @@
       <div id="colTwo">
         {% include 'chat.html' %}
     </div>
-    <div id="game-data" style="display: none;">
-        <input id="my-token" value="{{ token }}">
-        <input id="game-key" value="{{ game_key }}">
-        <input id="player-name" value="{{ player }}">
-    </div>
       <script>
           soloMatch = false;
           myName = "{{ player }}";
@@ -68,7 +63,8 @@
     </script>
 <!--    <script>var lowScore = {{ lowest_score }}</script>-->
     <script src="/js/common.js"></script>
-    <script src="/js/client-new.js"></script>
+    <script src="/js/combined.js"></script>
+    <script src="/js/client-messages.js"></script>
     <script src="/js/channel.js"></script>
 <!--    <script src="/js/images.js"></script>-->
   </body> 

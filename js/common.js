@@ -316,28 +316,7 @@ function countUp() {
     $timer.text('Time: '+mins+":"+rest);
   }
 }
-function sendMessage(action,actor,cards) {
-    if (cards) {
-        cards = cards.join();
-    }
-    var state = JSON.stringify(describeState());
-    $.ajax({
-        url: '/broadcast',
-        type: 'POST',
-        data: {
-            g:game_key,
-            action:action,
-            state:state,
-            cards:cards,
-            actor:actor,
-            running:running
-        },
-        success: function(data){
-        },
-        complete:function(){
-        }
-    });
-}
+
 function sendChat(chatter,chat) {
   $.ajax({
     url: '/chat',
