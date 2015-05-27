@@ -31,6 +31,26 @@ $startButton.on(myDown,function(e) {
 
 //generic and useful functions
 
+function tieScore(scores) {
+  var result = []
+  for (var player in scores) {
+    result.push(scores[player]);
+  }
+  result = result.sort(function(a, b){return b-a});
+  return (result[0] == result[1]);
+}
+
+function maxScore(scores) {
+  var winner = ['',0];
+  var players = Object.keys(scores);
+  for (var i =0;i<players.length;i++) {
+    if (scores[players[i]] > winner[1]) {
+      winner = [players[i],scores[players[i]]];
+    }
+  }
+  return winner;
+}
+
 function getIndex(needle, haystack) {      
     return haystack.join('-').split('-').indexOf( needle.join() );          
 }
@@ -180,10 +200,10 @@ function moveOn() {
     $overlay.html('');
     $overlay.hide();
     confirmSetPresenceOrEnd();
-    updateInfo();
     gamePaused = false;
     declared = false;
     state = describeState();
+    updateInfo();
     sendMessage('update');
   } 
 }
@@ -200,6 +220,22 @@ function confirmSetPresenceOrEnd() {
   }
 }
 
+function deckContainsSet(deck) {
+  for (var i=0;i<(deck.length-2);i++){
+    for (var j=i+1;j<(deck.length-1);j++) {
+      var pair = [board[i],board[j]];
+      if (pair.indexOf('aaaa') == -1) {
+      var third = nameThird([deck[i],deck[j]]);
+      var k = deck.indexOf(third)
+      if (k != -1) {
+        return true;
+      }
+      }
+    }
+  }
+  return false;
+}
+
 function gameOver () {
   $overlay.show()
   var $h1 = $('<h1>');
@@ -211,6 +247,7 @@ function gameOver () {
   gameover = true;
   gamePaused = true;
   sendMessage('end',winner[0]);
+  $('#reshuffle').hide();
   $('#replay').show();
 }
 
@@ -308,13 +345,20 @@ onMessage = function(m) {
   } else if (message.action == 'chat') {
       $p = $('<p>');
       $p.html('<span class="chatter-name">'+message.sender+'</span>: '+message.chat);
-      $('#colTwo').append($p);
+      $('#chat-box').append($p);
+      $('#chat-box').animate({scrollTop:$('#chat-box').prop("scrollHeight")},400);
   }
   updateScores(scores);
   updateBoardHtml(board);
 }
 
 //what happens
+
+$overlay.click(function (e) {
+  if (gameover == true) {
+    $overlay.hide();
+  }
+})
 
 scores = {};
 scores[hostName] = 0;

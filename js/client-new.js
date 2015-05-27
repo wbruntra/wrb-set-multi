@@ -98,7 +98,7 @@ function gameOver () {
 }
 
 function enableKeys() {
-  $("body").keydown(function(e) {
+  $("body").keyup(function(e) {
     if (e.which == 83) {
       declarePress();
     }
@@ -181,6 +181,7 @@ onMessage = function(m) {
   else if (message.action == 'chat') {
       $p = $('<p>');
       $p.html('<span class="chatter-name">'+message.sender+'</span>: '+message.chat);
-      $('#colTwo').append($p);
+      $('#chat-box').append($p);
+      $('#chat-box').animate({scrollTop:$('#chat-box').prop("scrollHeight")},400);
   }
 }

@@ -276,7 +276,7 @@ class RulesHandler(Handler):
 
 class DummyHandler(Handler):
     def get(self):
-        self.render('dummy5.html')
+        self.render('dummy6.html')
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler),

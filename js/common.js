@@ -147,6 +147,7 @@ function declareSet() {
   console.log('set declared');
   $('#reminder').hide();
   $('#board').addClass('active');
+  $('#declaration').text(activePlayer +' called SET!');
   declared = true;
   $setButton.hide();
   window.secondsLeft = 5;
@@ -349,26 +350,30 @@ function sendChat(chatter,chat) {
   });
 }
 
-$('#colTwo').hide();
+/*$('#colTwo').hide();*/
 $setButton.hide();
 
 function createRecord(finder) {
   var $div = $('<div>');
   var $p = $('<p>');
-  $p.text(finder);
+  var $span = $('<span>');
+  $span.addClass('finder-name');
+  $span.text(finder);
+  $p.append($span);
   var s = '';
   $('.on').each(function() {
     s += $(this).html();
   });
   $div.html($p.html()+s);
-  $('#colTwo').append($div);
+  $('#chat-box').append($div);
+  $('#chat-box').animate({scrollTop:$('#chat-box').prop("scrollHeight")},400);
 }
 
 function clearKeys() {
-  $('body').unbind("keydown");
+  $('body').unbind("keyup");
 }
 
-$('#my-msg').focus(function() {
+$('#my-msg').focusin(function() {
   console.log("keys cleared");
   clearKeys();
 });
@@ -382,5 +387,4 @@ $('#chat-msg').on("submit",function (e) {
   var chat = $('#my-msg').val();
   sendChat(chatter,chat);
   $('#my-msg').val('');
-  $("#my-msg").blur();
 });

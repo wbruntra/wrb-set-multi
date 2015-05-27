@@ -266,7 +266,7 @@ $("#board").on(myDown, function(event) {
 //Allow user to click box for selection
 
 $("td").on(myDown,function(event) {
-  if (declared == true && activePlayer == hostName) {
+  if (declared == true && activePlayer == myName) {
     if ($(this).hasClass('on')) {
       $(this).removeClass('on');
     } else {
@@ -299,8 +299,8 @@ $submitButton.on(myDown,function (event) {
   var cards = getCards(cells);
   if (testSet(cards)) {
       scores[hostName] += 1;
-      admireSet(cards,hostName+" found a set!");
-      sendMessage('admire',hostName,cards);
+      admireSet(cards,myName+" found a set!");
+      sendMessage('admire',myName,cards);
     updateScores(scores);
   } else {
     $("td").removeClass('on');
@@ -556,6 +556,7 @@ function prematureEnd() {
     }
   }
 }
+
 
 function tieScore(scores) {
   var result = []
@@ -816,7 +817,7 @@ $setButton.on(myDown,function (e) {
   }
 });
 
-$("body").keydown(function(e) {
+$('body').keydown(function(e) {
   if (e.which == 83) {
     declarePress();
   }
@@ -970,3 +971,6 @@ function addChat(chatter,message) {
   $newChat = $('p');
   $newChat.html('<span class="chatter-name">'+chatter+'</span>: '+message);
 }
+
+board = ["1002", "1001", "1102", "1221", "2100", "0101", "1100", "1212", "0202", "0121", "2221", "2022"];
+deck = ["2011", "2200", "0011"];

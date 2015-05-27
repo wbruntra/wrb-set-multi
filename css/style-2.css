@@ -1,6 +1,6 @@
 #pregame {
   height:100%;
-  width:100%;
+  width:75%;
   background: #fff;
   position: absolute;
   top:0;
@@ -111,7 +111,7 @@ h1 {
 #overlay, #name-prompt {
   opacity:.6;
   height: 100%;
-  width: 100%;
+  width: 75%;
   background: rgba(0,0,0,.2);
   color: #000;
   position: absolute;
@@ -277,10 +277,14 @@ div#reminder, div#declaration{
   color:red;
 }
 
-#colTwo p {
+#colTwo p, h3 {
   width:100%;
   clear:both;
   margin: 6px 0;
+}
+
+#colTwo h3 {
+  text-decoration:underline;
 }
 
 #colTwo div.message {
@@ -292,13 +296,37 @@ div#reminder, div#declaration{
 }
 
 #colTwo .box {
-  margin: 0 0;
-  width:15%;
+  margin: 2px 2px;
+  width:18%;
   float:left;
+  border: 1px solid black;
   clear:none;
+}
+
+#chat-box {
+  position:fixed;
+  overflow:auto;
+  left:77%;
+  right:0;
+  top:0;
+  bottom:40px;
+}
+
+#chat-box div {
+  margin:10px;
+  clear:both;
+  border-spacing: 10px 5px;
+}
+
+#chat-box .finder-name {
+  padding:8px;
 }
 
 #colTwo input {
   position:fixed;
   bottom:10px;
+}
+
+#my-msg {
+  width:20%;
 }
