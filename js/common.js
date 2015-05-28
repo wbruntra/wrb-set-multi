@@ -20,7 +20,7 @@ if (isHost) {
   hostName = myName;
 }
 
-activePlayer = 'none'
+activePlayer = 'none';
 running = false;
 
 function updateInfo() {
@@ -32,6 +32,12 @@ function updateInfo() {
 function getIndex(needle, haystack) {      
     return haystack.join('-').split('-').indexOf( needle.join() );          
 } 
+
+function removeValue(array,value) {
+    index = array.indexOf(value);
+    array.splice(index,1);
+    return array;
+}
 
 function nameThird(cards) {
   var features;
@@ -317,14 +323,15 @@ function countUp() {
   }
 }
 
-function sendChat(chatter,chat) {
+function sendChat(chatter,chat,event) {
   $.ajax({
     url: '/chat',
     type: 'POST',
     data: {
       g:game_key,
       chatter:chatter,
-      chat:chat
+      chat:chat,
+      event:event
     }
   });
 }

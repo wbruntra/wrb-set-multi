@@ -1,7 +1,3 @@
-if (isHost) {
-  $startButton = $('#start-button');
-  players = [myName];
-}
 //called only by client
 
 function processInitial(msg) {
@@ -37,6 +33,22 @@ function attemptDeclare() {
 
 
 //probably only for host
+
+function saveState() {
+    var state = {};
+    state.board = board;
+    state.deck = deck;
+    state.players = players;
+    state.scores = scores;
+    return state;
+}
+
+function loadState(savedState) {
+  board = savedState.board;
+  deck = savedState.deck;
+  players = savedState.players;
+  scores = savedState.scores;
+}
 
 function describeState() {
     var state = {};
@@ -353,7 +365,7 @@ function enableKeys() {
   });
 }
 
-function sendMessage(action,actor,cards) {
+/*function sendMessage(action,actor,cards) {
     if (cards) {
         cards = cards.join();
     }
@@ -379,9 +391,9 @@ function sendMessage(action,actor,cards) {
 onOpened = function() {
   connected = true;
 //    sendMessage('/opened');
-  };
+  };*/
 
-onMessage = function(m) {
+/*onMessage = function(m) {
   console.log(m.data);
   var message = JSON.parse(m.data);
   var sender = message.nickname;
@@ -415,6 +427,31 @@ onMessage = function(m) {
   }
   updateScores(scores);
   updateBoardHtml(board);
+}*/
+function addChatMessage(message) {
+  if (message.event == "enter") {
+    $p = $('<p>');
+    $p.addClass('room-event');
+    $p.text(message.sender+' has joined.');
+  } else if (message.event == "exit") {
+    $p = $('<p>');
+    $p.addClass('room-event');
+    $p.text(message.sender+' has left.');    
+  } else {
+    $p = $('<p>');
+    $p.html('<span class="chatter-name">'+message.sender+'</span>: '+message.chat);
+  }
+  $('#chat-box').append($p);
+  $('#chat-box').animate({scrollTop:$('#chat-box').prop("scrollHeight")},400);
+}
+
+function pregameShowPlayers(players) {
+  $('#pregame-players').html('');
+  for (var i=0;i<players.length;i++) {
+    var $li = $('<li>');
+    $li.text(players[i]);
+    $('#pregame-players').append($li);
+  }
 }
 
 //what happens
@@ -426,12 +463,15 @@ $overlay.click(function (e) {
 })
 
 if (isHost) {
+  $startButton = $('#start-button');
   disabled = "";
+  players = [myName];
   scores = {};
   scores[hostName] = 0;
   layoutGame();
   state = describeState();
   disableCounter = 0;
   setInterval(disableTimer,1000);
+  pregameShowPlayers(players);
 }
 enableKeys();

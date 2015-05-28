@@ -165,6 +165,9 @@ class MoveHandler(Handler):
         host_token = game.host_token
         nickname = self.request.get('actor')
         action = self.request.get('action')
+        if action == 'exit':
+            game.player_nicks.remove(nickname)
+            game.put()
         cards = self.request.get('cards')
         msg = {'nickname':nickname,
                'action':action}
@@ -216,9 +219,11 @@ class ChatHandler(Handler):
         game_key = self.request.get('g')
         chatter = self.request.get('chatter')
         chat = self.request.get('chat')
+        event = self.request.get('event')
         msg = {'action':'chat',
                'sender':chatter,
-               'chat':chat}
+               'chat':chat,
+              'event':event}
         channel_msg = json.dumps(msg)
         game = Game.get_by_key_name(game_key)
         tokens = game.player_tokens

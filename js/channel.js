@@ -16,3 +16,11 @@ initialize = function() {
 }      
 
 setTimeout(initialize, 100);
+
+$(window).unload(function() {
+/*  if (isHost) {
+    sendMessage('hostleft');
+  } else {
+    sendMessage('exit');
+  }*/
+});

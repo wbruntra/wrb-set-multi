@@ -828,9 +828,10 @@ $('body').keydown(function(e) {
     $submitButton.trigger(myDown);
   }
   if (e.which == 82 && declared == false && gamePaused == false) {
-    populateBoard();
+    $('#reshuffle').trigger(myDown);
+/*    populateBoard();
     updateInfo();
-    sendMessage('update');
+    sendMessage('update');*/
   }
 });
 

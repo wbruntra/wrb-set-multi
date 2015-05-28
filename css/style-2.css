@@ -283,6 +283,10 @@ div#reminder, div#declaration{
   margin: 6px 0;
 }
 
+#colTwo p.room-event {
+  font-style:italic;
+}
+
 #colTwo h3 {
   text-decoration:underline;
 }

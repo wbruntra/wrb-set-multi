@@ -23,6 +23,9 @@ function sendMessage(action,cards) {
 
 onOpened = function() {
     sendMessage('joined');
+/*    reporter = setInterval(function() {
+      sendMessage('joined');
+    },10000);*/
   };
 
 onMessage = function(m) {
@@ -33,12 +36,14 @@ onMessage = function(m) {
   var actor = message.actor;
   var scores = message.scores;
   if (action == 'start') {
-      processInitial(message)
+      processInitial(message);
+/*      clearInterval(reporter);*/
   }
   if (action == 'update') {
       $('#declaration').hide();
       $('#pregame').hide();
       $('#middle').show();
+      moveOn();
       processUpdate(message);
   }
   else if (message.action == 'declared') {
@@ -62,9 +67,10 @@ onMessage = function(m) {
       },3500);
   }
   else if (message.action == 'chat') {
-      $p = $('<p>');
-      $p.html('<span class="chatter-name">'+message.sender+'</span>: '+message.chat);
-      $('#chat-box').append($p);
-      $('#chat-box').animate({scrollTop:$('#chat-box').prop("scrollHeight")},400);
+      addChatMessage(message);
+  }
+  else if (message.action == 'hostleft') {
+      $overlay.text('Host has left!');
+      $overlay.show();
   }
 }
