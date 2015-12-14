@@ -1,11 +1,6 @@
-<html><head>
-    <title>My Set Game</title>
-    <script src="/_ah/channel/jsapi"></script><style type="text/css"></style>
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/css/style-2.css">
-    <link rel="stylesheet" href="/css/min-sprites.css">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  </head>
+{% extends 'base.html' %}
+
+{% block content %}
   <body>
     <div id="pregame" style="display: none;">
       <div id="pregame-content">
@@ -26,8 +21,8 @@
         </div>
         
       </div>
-    
   <div id="colOne">
+   {% include 'nav.html' %}
     <div id="topbar">
       <div id="timer">Time: 2:44</div>
       <div id="reminder" style="display: block;"><p>Hit "s" when you see a set!</p></div>
@@ -57,11 +52,8 @@
       </div>
     </div>
     </div>
-      <div id="colTwo" style="display: block;"><div id="chat-box"><p>History</p><div><span span class="finder-name">Jamie</span><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three solid" id="c2222" alt="card" src="/img/22.png"></a></div><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two striped" id="c1120" alt="card" src="/img/20.png"></a></div><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one empty" id="c0021" alt="card" src="/img/21.png"></a></div></div><p><span class="chatter-name">Jamie</span>: this is some chat</p><div>Jamie<div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two striped" id="c1122" alt="card" src="/img/22.png"></a></div><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0112" alt="card" src="/img/12.png"></a></div><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2102" alt="card" src="/img/02.png"></a></div></div><div>Jamie<div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0111" alt="card" src="/img/11.png"></a></div><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1210" alt="card" src="/img/10.png"></a></div><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2012" alt="card" src="/img/12.png"></a></div></div><p><span class="chatter-name">Jamie</span>: more chat</p><p><span class="chatter-name">Jamie</span>: and more</p><p><span class="chatter-name">Jamie</span>: and ever more</p></div>
-      <form id="chat-msg" action="javascript:void(0);" autocomplete="off" _lpchecked="1">
-        <input id="my-msg" type="text" name="chat">
-        <input type="submit" hidden="">
-      </form>
+      <div id="colTwo" style="display: block;">
+        {% include 'chat.html' %}
     </div>
       <script>
           soloMatch = false;
@@ -75,4 +67,6 @@
     <script src="/js/channel.js"></script>-->
 <!--    <script src="/js/images.js"></script>-->
    
-<script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i; } else { d.textContent=i; } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script></body></html>
+<script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i; } else { d.textContent=i; } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }}catch(e){}</script>
+</body>
+{% endblock %}

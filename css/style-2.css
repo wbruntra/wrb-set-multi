@@ -64,7 +64,9 @@ body {
 }
 
 #middle {
-  width:100%;
+  margin: 0 10px;
+  width:90%;
+  max-width:650px;
 }
 
 #board {
@@ -81,6 +83,7 @@ body {
   font-size:.7em;
   background-color:beige;
   min-height:100%;
+  min-width:225px;
   border-left: 2px solid black;
   padding-left:10px;
 }
@@ -178,8 +181,18 @@ button, div#timer, #score-info {
   width:120px;
 }
 
+#board-info, #all-scores {
+  clear:both;
+}
+
+#board-info p, #all-scores p {
+  width:45%;
+  margin: 4px 2%;
+  float:left;
+}
+
 #game-info, #replay, #reshuffle {
-  margin:5px 30px;
+  margin:10px 25px;
   float: left;
   width: 400px;
   font-size: .75em;
@@ -191,22 +204,16 @@ button, div#timer, #score-info {
 }
 
 
-#game-info span, #replay {
+#game-info span, #replay, #reshuffle {
   line-height: 1.2em;
   float: left;
   width: 47%;
   padding: 1.5%;
 }
 
-#replay {
+#replay, #reshuffle {
   width:20%;
-  float:right;
-  font-weight:bold;
-  background-color:#c78732;
-}
-
-#reshuffle {
-  width:20%;
+  max-width:120px;
   font-weight:bold;
   background-color:#c78732;
 }
@@ -277,6 +284,12 @@ div#reminder, div#declaration{
   color:red;
 }
 
+/*chat styling*/
+
+#colTwo {
+  overflow-x:hidden;
+}
+
 #colTwo p, h3 {
   width:100%;
   clear:both;
@@ -308,10 +321,9 @@ div#reminder, div#declaration{
 }
 
 #chat-box {
-  position:fixed;
   overflow:auto;
-  left:77%;
-  right:0;
+/*  left:77%;
+  right:0;*/
   top:0;
   bottom:40px;
 }
@@ -334,3 +346,62 @@ div#reminder, div#declaration{
 #my-msg {
   width:20%;
 }
+
+/*.set {
+  display:inline-block;
+  clear:none;
+}*/
+
+/*end chat*/
+
+/* for nav */
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  align-content:center;
+}
+
+.header:after     {
+  content:"";
+  height:0;
+  display:block;
+  visibility:hidden;
+  clear:both;}
+.header {
+  background: #c78732;
+  border-bottom: 3px solid #86491d;}
+
+.header .nav {
+  top: 0;
+  right: 0;
+  margin: 0;
+  position: relative;
+  left: 15px;
+  z-index: 99999999;}
+.header .nav li {
+  font-size:.85em;
+  display: inline-block;
+  margin: 0;
+  list-style: none;}
+.header .nav li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0 0;
+    margin: 0 0 0 30px;
+    width: 90px;
+    text-align: center;
+    text-transform:lowercase;
+    white-space: nowrap; 
+}
+.header .nav li.on a {text-decoration: underline;}
+.header .nav li a:hover, .header .nav li a:active {
+  color: #FFE200;
+}
+
+.header, .wrapper {
+  height:35px;
+}
+
+/*end nav*/

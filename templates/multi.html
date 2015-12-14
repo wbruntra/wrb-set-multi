@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Set Game</title>
-    <script src='/_ah/channel/jsapi'></script>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/style-2.css">
-    <link rel="stylesheet" href="/css/min-sprites.css">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  </head>
+{% extends 'base.html' %}
+
+{% block content %}
   <body>
     <div id="pregame">
       <div id="pregame-content">
@@ -20,10 +13,7 @@
         <div id="pregame-bottom">
           <p><strong>keyboard tips</strong></p>
           <p>hit 's' to call out your set,'r' reshuffles the deck</p>
-          <h3>Players so far:</h3>
-          <ul id="pregame-players">
-            <li>{{ player }} (you)</li>
-          </ul>
+      {% include 'pregame-players.html' %}
         </div>  
         </div>
         
@@ -47,15 +37,15 @@
     <div id="bottom-row">
       <div id="game-info">
         <div id="all-scores">
-        </div><br>
-        <div>
-        <span id="remaining"></span>
-        <span id="sets-on-board"></span>
+        </div>
+        <div id="board-info">
+          <p id="remaining"></p>
+          <p id="sets-on-board"></p>
         </div>
       </div>
       <div id="bottom">
         <button type="button" id="reshuffle" onclick="">Reshuffle</button>
-        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>
+        <button type="button" id="replay" onclick="">Restart!</button>
       </div>
     </div>
     </div>
@@ -73,5 +63,5 @@
     <script src="/js/host-messages.js"></script>
     <script src="/js/channel.js"></script>
 <!--    <script src="/js/images.js"></script>-->
-  </body> 
-</html>
+  </body>
+{% endblock %}

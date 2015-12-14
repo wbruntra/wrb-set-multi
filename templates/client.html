@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Set Game</title>
-    <script src='/_ah/channel/jsapi'></script>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/style-2.css">
-    <link rel="stylesheet" href="/css/min-sprites.css">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  </head>
+{% extends 'base.html' %}
+
+{% block content %}
   <body>
     <div id="pregame">
       <div id="pregame-content">
@@ -20,15 +13,15 @@
         </p>
           <p><strong>keyboard tips</strong></p>
           <p>hit 's' to call out your set</p>
-        </div>
+          {% include 'pregame-players.html' %}
+      </div>
         <button id="start-button" style="display:none"></button>
       </div>
-    </div>
   <div id="colOne">
     <div id="topbar">
       <div id="timer"></div>
       <div id="reminder"><p>Hit &quot;s&quot; when you see a set!</p></div>
-      <div id="declaration">Somebody is declaring!</div>
+      <div id="declaration">Somebody called SET!</div>
       <div id="countdown"></div>
     </div>
     <div id="middle">
@@ -40,12 +33,7 @@
       </div>
     </div>
     <div id="bottom-row">
-    <div id="game-info">
-        <div id="all-scores">
-        </div>
-        <span id="remaining"></span>
-        <span id="sets-on-board"></span>
-      </div>
+      {% include 'info-board.html' %}
       <div id="bottom">
 <!--        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>-->
       </div>
@@ -67,4 +55,4 @@
     <script src="/js/channel.js"></script>
 <!--    <script src="/js/images.js"></script>-->
   </body> 
-</html>
+{% endblock %}

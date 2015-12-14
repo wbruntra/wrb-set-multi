@@ -40,11 +40,14 @@ onMessage = function(m) {
 /*      clearInterval(reporter);*/
   }
   if (action == 'update') {
-      $('#declaration').hide();
+/*      $('#declaration').hide();
       $('#pregame').hide();
-      $('#middle').show();
+      $('#middle').show();*/
       moveOn();
       processUpdate(message);
+      if (!gameStarted) {
+        pregameShowPlayers(players);
+      }
   }
   else if (message.action == 'declared') {
       declareSet();

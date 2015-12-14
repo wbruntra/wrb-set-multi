@@ -35,6 +35,8 @@ onMessage = function(m) {
       addPlayer(message.nickname);
       pregameShowPlayers(players);
       makeScoreboard(players);
+      state = describeState();
+      sendMessage('update');
     }
     if (gameStarted) {
       state = describeState();

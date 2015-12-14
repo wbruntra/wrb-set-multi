@@ -7,8 +7,8 @@ $submitButton = $("#submit");
 $setButton = $('#declare-set');
 $board = $("#board");
 board = [];
-gamePaused = false;
 
+gamePaused = false;
 declared = false;
 
 gameover = false;

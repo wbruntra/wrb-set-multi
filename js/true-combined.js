@@ -206,7 +206,7 @@ function failedFind() {
 function makeScoreboard(players) {
   $('#all-scores').html('');
   for (var i=0;i<players.length;i++) {
-    var $p = $('<span id="player-'+i+'-score">'+players[i]+': 0</span>');
+    var $p = $('<p id="player-'+i+'-score">'+players[i]+': 0</p>');
     $('#all-scores').append($p);
   }
 }
@@ -396,9 +396,10 @@ function processInitial(msg) {
 
 function processUpdate(msg) {
   state = msg.state;
-  board = state['board'];
-  scores = state['scores'];
-  remain = state['remain'];
+  board = state.board;
+  scores = state.scores;
+  remain = state.remain;
+  players = state.players;
   updateScores(scores);
   updateBoardHtml(board);
   updateInfo();
@@ -436,7 +437,7 @@ function describeState() {
     state.board = board;
     state.players = players;
     state.scores = scores;
-    state.remain = deck.length;
+    state.remain = board.length+deck.length;
     return state;
 }
 
@@ -446,7 +447,6 @@ $startButton.on(myDown,function(e) {
   $('#declaration').hide();
   $('#pregame').hide();
   $('#middle').show();
-  $('#colTwo').show();
   gameStarted = true;
   if (isHost) {
     state = describeState();
