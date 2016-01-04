@@ -35,6 +35,30 @@ var playingTo = 9;
 
 var $startButton = $('#start-button');
 
+
+function fill_td(td, cardName) {
+  //console.log(td +" ,"+ cardName);
+  var numReference = ["one","two","three"];
+  var fillReference = ["empty","striped","solid"]
+  var colorReference = ["red", "green", "purple"];
+  var $cell = $(td);
+  var $box = $('<div class="box"></div>');
+  var $a = $('<a class="stretchy no-limit" href="#"></a>');
+  var $spacer = $('<img class="spacer" src="/img/spacer.png" alt="spacer">');
+  var $cardImg = $('<img class="sprite" id="c'+cardName+'" alt="card">');
+  var cardShape = cardName[3];
+  var cardColor = cardName[2];
+  var cardNumber = numReference[parseInt(cardName[0])];
+  var cardFill = fillReference[parseInt(cardName[1])];
+  $cardImg.addClass(cardNumber);
+  $cardImg.addClass(cardFill);
+  $cardImg.attr('src','/img/'+cardColor+cardShape+'.png');
+  $a.append($spacer);
+  $a.append($cardImg);
+  $box.append($a);
+  $cell.empty().append($box);
+}
+
 $startButton.on(myDown,function(e) {
   console.log("Game started!");
   guessTime = 36000/parseInt($('#difficulty').val());
@@ -66,8 +90,42 @@ $submitButton.hide();
 
 // 1. Initializing the game
 
+function createTable() {
+  var columns = ['A','B','C','D'];
+  var rows = ['1','2','3'];
+  var $spacer = $('<img class="spacer" src="/img/spacer.png" alt="spacer">');
+  var $table = $('<table>');
+  for (var i = 0;i<rows.length;i++) {
+    var $newRow = $('<tr>');
+    for (var j=0;j<columns.length;j++) {
+      var $newCell = $('<td id="'+columns[j]+rows[i]+'"></td>')
+      $newRow.append($newCell);
+    }
+    $table.append($newRow);
+  }
+  $board.append($table);
+}
+
+function createDivTable() {
+  var columns = ['A','B','C','D'];
+  var rows = ['1','2','3'];
+  var $spacer = $('<img class="spacer" src="/img/spacer.png" alt="spacer">');
+//  var $table = $('<div>');
+//  $table.attr('id','card-table');
+  for (var i = 0;i<rows.length;i++) {
+    for (var j=0;j<columns.length;j++) {
+      var $newCell = $('<div id="'+columns[j]+rows[i]+'"></div>')
+      $newCell.addClass('cell');
+      $('#board').append($newCell);
+    }
+  }
+//  $board.append($table);
+}
+
 $('#middle').hide();
+
 createDivTable();
+
 
 function deckbuilder() {
   opts = ['0','1','2'];
@@ -84,7 +142,7 @@ function deckbuilder() {
   return deck;
 }
 
-function layoutGame() {
+function layoutGame () {
   deck = deckbuilder();
   populateBoard();
   confirmSetPresenceOrEnd();
@@ -146,16 +204,16 @@ $("#board").on(myDown, function(event) {
 
 //Allow user to click box for selection
 
-$("td").on(myDown,function(event) {
+$(".cell").on(myDown,function(event) {
   if (declared == true) {
     if ($(this).hasClass('on')) {
       $(this).removeClass('on');
     } else {
-      if ($('td.on').length <3) {
+      if ($('.cell.on').length <3) {
         $(this).addClass('on');
       }
     }
-    if ($('td.on').length == 3) {
+    if ($('.cell.on').length == 3) {
       $submitButton.addClass('ready');
       setTimeout(delayedSubmit,400);
     }
@@ -163,7 +221,7 @@ $("td").on(myDown,function(event) {
 });
 
 function delayedSubmit() {
-  if ($('td.on').length == 3 && !gamePaused) {
+  if ($('.cell.on').length == 3 && !gamePaused) {
     $submitButton.trigger(myDown);
   }
 }
@@ -182,12 +240,12 @@ $submitButton.on(myDown,function (event) {
       window.yourScore += 1;
       admireSet(cards,"CONGRATS!");
   } else {
-    $("td").removeClass('on');
+    $(".cell").removeClass('on');
   }
 })
 
 function getSelectedBoxes() {
-  var boxes = $('td.on');
+  var boxes = $('.cell.on');
   var cells = [];
   boxes.each(function(index) {
     cells.push($(this).attr('id'));
@@ -227,9 +285,9 @@ function testSet(cards) {
 function admireSet(cards,message) {
   gamePaused = true;
   failedFind();
-  $('td').removeClass('on');
+  $('.cell').removeClass('on');
   for (var i=0;i<cards.length;i++) {
-    var $cell = $('#c'+cards[i]).parents('td');
+    var $cell = $('#c'+cards[i]).parents('.cell');
     $cell.addClass('on');
   }
   $board.addClass('highlighted');
@@ -250,7 +308,7 @@ function updateBoard (cards) {
     var oldCard = cards[i];
     var index = board.indexOf(oldCard);
     board.splice(index,1);
-    var $cell = $('#c'+oldCard).parents('td');
+    var $cell = $('#c'+oldCard).parents('.cell');
     cells.push($cell.attr('id'));
     $('#c'+oldCard).remove();
   }
@@ -284,7 +342,7 @@ $overlay.click( function(e) {
     var cards = getCards(cells);
     updateBoard(cards);
     $board.removeClass('highlighted');
-    $("td").removeClass('on');
+    $(".cell").removeClass('on');
     $overlay.html('');
     $overlay.hide();
     prematureEnd();
@@ -588,8 +646,8 @@ function failedFind() {
   $setButton.show();
   $submitButton.hide();
   $('#countdown').removeClass('running');
-  clearInterval(window.timerId);
-  $('td.on').removeClass('on');
+//  clearInterval(window.timerId);
+  $('.cell.on').removeClass('on');
 }
 
 var $setButton = $('#declare-set');

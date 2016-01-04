@@ -1,0 +1,52 @@
+<html><head>
+    <title>My Set Game</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/clean.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script><style type="text/css"></style>
+  </head>
+  <body>
+    <div id="pregame">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game!</p>
+        <span>Easy<input id="difficulty" type="range" min="6" max="24">Hard</span><br>
+        <p>First to get 9 points is the winner, or play to the bitter end!</p>
+        <span>First to 9<input id="gametype" type="range" min="0" max="1" value="0">Bitter End</span><br>
+        <button id="start-button" onclick="">Start the Game</button>
+        <div id="pregame-bottom">
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set, 'g' to lock in your choice<br>'r' reshuffles the deck</p>
+          <p><a class="button" href="/rules">How to Play</a><a class="button" href="/scores">See High Scores</a></p>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div id="topbar">
+      <div id="timer">Time: 0:00</div>
+      <div id="reminder"><p>Hit "s" when you see a set!</p></div>
+      <div id="declaration"><p>Hit "g" to lock in!</p></div>
+      <div id="countdown"></div>
+    </div>
+    <div id="middle" style="display: none;">
+      <div id="board">
+      <div id="card-table"><div id="A1"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2020" alt="card" src="/img/20.png"></a></div></div><div id="B1"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2021" alt="card" src="/img/21.png"></a></div></div><div id="C1"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one empty" id="c0011" alt="card" src="/img/11.png"></a></div></div><div id="D1"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0121" alt="card" src="/img/21.png"></a></div></div><div id="A2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0220" alt="card" src="/img/20.png"></a></div></div><div id="B2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0122" alt="card" src="/img/22.png"></a></div></div><div id="C2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0102" alt="card" src="/img/02.png"></a></div></div><div id="D2"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0100" alt="card" src="/img/00.png"></a></div></div><div id="A3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0211" alt="card" src="/img/11.png"></a></div></div><div id="B3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two empty" id="c1020" alt="card" src="/img/20.png"></a></div></div><div id="C3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two empty" id="c1021" alt="card" src="/img/21.png"></a></div></div><div id="D3"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1210" alt="card" src="/img/10.png"></a></div></div></div></div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="" style="display: none;">Go!</button>
+        <button id="declare-set" type="button" onclick="">SET!</button>
+        <button id="score-info" type="button" onclick="">Score: 8000</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+      <div id="game-info">
+        <span id="your-score"></span>
+        <span id="opponent-score"></span><br>
+        <span id="remaining"></span>
+        <span id="sets-on-board"></span>
+      </div>
+      <div id="bottom">
+        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>
+      </div>
+    </div>
+    <script>var lowScore = 0</script>
+</html>
