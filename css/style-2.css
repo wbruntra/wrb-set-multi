@@ -69,10 +69,6 @@ body {
   max-width:650px;
 }
 
-#board {
-  width:100%;
-}
-
 #colTwo {
   position:absolute;
   top:0px;
@@ -284,6 +280,8 @@ div#reminder, div#declaration{
   color:red;
 }
 
+/*
+/*
 /*chat styling*/
 
 #colTwo {
@@ -405,3 +403,29 @@ div#reminder, div#declaration{
 }
 
 /*end nav*/
+
+#card-table div {
+
+}
+
+@media (orientation:portrait) {
+  
+  #timer {
+    display:none;
+  }
+  
+  #colOne {
+    width:100%;
+  }
+/*  #board {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}*/
+
+  #topbar {
+    display:none;
+  }
+}

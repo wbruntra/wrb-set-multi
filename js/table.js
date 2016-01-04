@@ -35,30 +35,6 @@ var playingTo = 9;
 
 var $startButton = $('#start-button');
 
-
-function fill_td(td, cardName) {
-  //console.log(td +" ,"+ cardName);
-  var numReference = ["one","two","three"];
-  var fillReference = ["empty","striped","solid"]
-  var colorReference = ["red", "green", "purple"];
-  var $cell = $(td);
-  var $box = $('<div class="box"></div>');
-  var $a = $('<a class="stretchy no-limit" href="#"></a>');
-  var $spacer = $('<img class="spacer" src="/img/spacer.png" alt="spacer">');
-  var $cardImg = $('<img class="sprite" id="c'+cardName+'" alt="card">');
-  var cardShape = cardName[3];
-  var cardColor = cardName[2];
-  var cardNumber = numReference[parseInt(cardName[0])];
-  var cardFill = fillReference[parseInt(cardName[1])];
-  $cardImg.addClass(cardNumber);
-  $cardImg.addClass(cardFill);
-  $cardImg.attr('src','/img/'+cardColor+cardShape+'.png');
-  $a.append($spacer);
-  $a.append($cardImg);
-  $box.append($a);
-  $cell.empty().append($box);
-}
-
 $startButton.on(myDown,function(e) {
   console.log("Game started!");
   guessTime = 36000/parseInt($('#difficulty').val());
@@ -90,25 +66,8 @@ $submitButton.hide();
 
 // 1. Initializing the game
 
-function createTable() {
-  var columns = ['A','B','C','D'];
-  var rows = ['1','2','3'];
-  var $spacer = $('<img class="spacer" src="/img/spacer.png" alt="spacer">');
-  var $table = $('<table>');
-  for (var i = 0;i<rows.length;i++) {
-    var $newRow = $('<tr>');
-    for (var j=0;j<columns.length;j++) {
-      var $newCell = $('<td id="'+columns[j]+rows[i]+'"></td>')
-      $newRow.append($newCell);
-    }
-    $table.append($newRow);
-  }
-  $board.append($table);
-}
-
 $('#middle').hide();
-createTable();
-
+createDivTable();
 
 function deckbuilder() {
   opts = ['0','1','2'];
@@ -125,7 +84,7 @@ function deckbuilder() {
   return deck;
 }
 
-function layoutGame () {
+function layoutGame() {
   deck = deckbuilder();
   populateBoard();
   confirmSetPresenceOrEnd();

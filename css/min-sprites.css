@@ -14,6 +14,16 @@ table tr {
   background-color:#480505;
 }
 
+#card-table div {
+  padding: 0 5px;
+  margin:5px;
+  border-width:2px;
+  border-style:solid;
+  border-radius:5px;
+  background-color:#480505;
+  float:left;
+}
+
 #board {
   float: left;
   border-width: 2px;
@@ -24,9 +34,8 @@ table tr {
   padding: 0;
   background-color: #a93232;
   clear:both;
-  width:100%;
   margin:10px;
-  max-width: 800px;
+  width:720px;
 }
 
 #board.active {
@@ -102,18 +111,26 @@ a.on {
 .box {
   float: left;
   clear: both;
-  width: 100%;
-  margin: 10px 0;
+  margin: 5px 0;
   background: #eee;
+  width:130px;
+}
+
+@media (orientation:portrait) {
+  #board {
+     width:690px;
+  }
+  
+  .box {
+    width:180px;
+  }
+  
+  #colTwo {
+    display:none;
+  }
 }
 .stretchy {
   width:100%;
-  margin-right:5%;
-}
-
-table {
-  border-spacing:10px 5px;
-  float:left;
 }
 
 .one.empty {

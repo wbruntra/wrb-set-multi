@@ -1,0 +1,448 @@
+/* pregame stuff */
+
+#pregame {
+  height:100%;
+  width:75%;
+  background:#fff;
+  text-align:center;
+  margin-left:-5px;
+}
+
+#pregame-content {
+  width:80%;
+  padding:20px;
+  font-size:1.2em;
+}
+
+#pregame-content li {
+  list-style:none;
+}
+
+#pregame button, #pregame a.button {
+  padding: 7px 10px ;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+#pregame a.button {
+  text-decoration: none;
+  background-color: #a93232;
+  border: none;
+  margin-right:15px;
+}
+
+/* end pregame */
+
+body {
+  padding:0;
+  margin:0;
+  background-color:#588c7e;
+  font-family:Lato;
+  font-size:.9em;
+  margin-left:5px;
+}
+
+/* things that pop up */
+
+#overlay, #name-prompt {
+  opacity:.7;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.2);
+  color: #000;
+  position: absolute;
+  top:0;
+  left:0;
+  margin:0;
+}
+
+#overlay h1 {
+  width:350px;
+  font-size:3.5em;
+  margin:150px;
+  color:#1a1d04;
+  text-align:center;
+  background-color:white;
+}
+
+#name-prompt div {
+  position:absolute;
+  top:30%;
+  left:20%;
+  background-color: #245246;
+  border-radius: 10px;
+  padding: 20px;
+  color: rgb(39, 8, 4);
+  border-style: solid;
+}
+
+#overlay img {
+  margin-top:  10%;
+  padding: 5px;
+}
+
+/* all the stuff in the body */
+
+#colOne {
+  width:75%;
+  float:left;
+}
+
+#colTwo {
+  width:25%;
+  float:left;
+}
+
+
+/* all the stuff in column one */
+
+#topbar {
+  display:none;
+}
+
+#topbar div{
+  float:left;
+  height:40px;
+}
+
+#timerDiv {
+  width:120px;
+}
+
+#topbar div p {
+  margin:auto;
+  padding:10px;
+  text-align:center;
+}
+
+#countdown {
+}
+
+#countdown.running, #declaration.running {
+  display:block;
+}
+
+#middle {
+  clear:both;
+  border-radius:8px;
+  overflow:auto;
+  width:732px;
+  margin-top:10px;
+}
+
+#board div {
+  width:150px;
+  float:left;
+  margin:10px;
+}
+
+#board div.box {
+  margin:0;
+}
+
+#board {
+  overflow:auto;
+  background-color:#a93232;
+  border:5px solid black;
+  border-radius:8px;
+}
+
+#board.active {
+  border-color:#193dff;
+}
+
+.cell {
+  border-radius:5px;
+  border: 4px solid #3b1414;
+}
+
+.cell.on {
+  border-color:#ee0;
+  background-color:#ee0;
+}
+
+button, div#timer, #score-info {
+}
+
+
+#board.highlighted .cell img { 
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px); 
+}
+
+#board.highlighted .cell.on img { 
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0); 
+}
+
+#bottom-row {
+  margin-top:10px;
+}
+
+#bottom-row div {
+  margin-left:5px;
+  float:left;
+}
+
+#game-info {
+  background-color:bisque;
+  border: 2px solid #222f2c;
+  border-radius:2px;
+  width:55%;
+  overflow:auto;
+}
+
+#all-scores {
+  width:70%;
+  margin-bottom:10px;
+}
+
+#all-scores p {
+  width:45%;
+}
+
+#button-holder {
+  overflow:auto;
+  float:left;
+}
+
+#button-holder button {
+  float:left;
+  clear:both;
+  margin:10px 20px;
+  width:100px;
+  height:40px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size:16px;
+  border-radius:5px;
+  border: 2px solid #3ac162;
+}
+/* end column one
+
+/* to make stretchyness work */
+
+.stretchy {
+  display:block;
+  float:left;
+  position:relative;
+  overflow:hidden;
+  max-width:120px;
+}
+
+.stretchy .spacer {
+  width: 100%;
+  height: auto;
+}
+
+.stretchy.no-limit {
+  max-width: none;
+} /*you could also set this to a pixel size, for example 320px, to limit the maximum*/
+
+.stretchy.no-limit .sprite {
+  min-height: 100%;
+}
+
+#middle a {
+  pointer-events:none;
+}
+
+.box {
+float:left;
+clear:both;
+width:100%;
+background:#eee;
+margin:10px 0;
+}
+
+a img {
+  border:0;
+  padding: 0;
+  margin: 0 ;
+  display: block;
+}
+
+a.on {
+  background-color:green;
+}
+
+.stretchy {
+  width:100%;
+}
+
+.stretchy .sprite {
+position:absolute;
+top:0;
+left:0;
+max-width:none;
+max-height:100%;
+}
+
+.one.empty {
+  left:0%;
+}
+
+.one.striped {
+  left:-100%
+}
+
+.one.solid {
+  left: -200%
+}
+
+.two.empty {
+  left:-300%
+}
+.two.striped {
+  left:-400%
+}
+.two.solid {
+  left:-500%
+}
+
+.three.empty {
+  left:-600%;
+}
+
+.three.striped {
+  left:-700%;
+}
+.three.solid {
+  left:-800%;
+}
+
+
+/* end stretchy */
+
+/*
+/*
+/*chat styling*/
+
+#colTwo {
+  position:absolute;
+  top:0px;
+  bottom:0px;
+  right:0;
+  overflow:auto;
+  font-size:.7em;
+  background-color:beige;
+  min-height:100%;
+  border-left: 2px solid black;
+  padding-left:10px;
+}
+
+#colTwo {
+  overflow-x:hidden;
+}
+
+#colTwo p, h3 {
+  width:100%;
+  clear:both;
+  margin: 6px 0;
+}
+
+#colTwo p.room-event {
+  font-style:italic;
+}
+
+#colTwo h3 {
+  text-decoration:underline;
+}
+
+#colTwo div.message {
+  text-indent:1em;
+}
+
+#colTwo .chatter-name {
+  font-weight:bold;
+}
+
+#colTwo .box {
+  margin: 2px 2px;
+  width:18%;
+  float:left;
+  border: 1px solid black;
+  clear:none;
+}
+
+#chat-box {
+  overflow:auto;
+  top:0;
+  bottom:40px;
+}
+
+#chat-box div {
+  margin:10px;
+  clear:both;
+  border-spacing: 10px 5px;
+}
+
+#chat-box .finder-name {
+  padding:8px;
+}
+
+#colTwo input {
+  position:fixed;
+  bottom:10px;
+}
+
+#my-msg {
+  width:20%;
+}
+
+
+/*end chat*/
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width:1000px)
+  and (min-height:760px) {
+  #board {
+     width:625px;
+  }
+  
+  #board div {
+    width:180px;
+  }
+  
+  #game-info {
+  background-color:bisque;
+  border: 2px solid #222f2c;
+  border-radius:2px;
+  width:55%;
+  overflow:auto;
+}
+}
+
+@media (max-width:960px) and 
+  (max-height:759px) {
+    #colTwo {
+      display:none;
+    }
+}
+
+@media (max-width:880px) {
+  #colOne {
+    width:100%;
+  }
+  
+  #colTwo {
+    display:none;
+  }
+}

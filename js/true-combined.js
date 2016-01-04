@@ -147,8 +147,24 @@ function createTable() {
   $board.append($table);
 }
 
+function createDivTable() {
+  var columns = ['A','B','C','D'];
+  var rows = ['1','2','3'];
+  var $spacer = $('<img class="spacer" src="/img/spacer.png" alt="spacer">');
+//  var $table = $('<div>');
+//  $table.attr('id','card-table');
+  for (var i = 0;i<rows.length;i++) {
+    for (var j=0;j<columns.length;j++) {
+      var $newCell = $('<div id="'+columns[j]+rows[i]+'"></div>')
+      $newCell.addClass('cell');
+      $('#board').append($newCell);
+    }
+  }
+//  $board.append($table);
+}
+
 $('#middle').hide();
-createTable();
+createDivTable();
 
 function declareSet() {
   console.log('set declared');
@@ -198,7 +214,7 @@ function failedFind() {
   $submitButton.hide();
   $('#countdown').removeClass('running');
   clearInterval(window.timerId);
-  $('td.on').removeClass('on');
+  $('.cell.on').removeClass('on');
   $setButton.hide();
   $submitButton.hide();
 }
@@ -234,16 +250,16 @@ function updateBoardHtml(board) {
 
 //Allow user to click box for selection
 
-$("td").on(myDown,function(event) {
+$(".cell").on(myDown,function(event) {
   if (declared == true && activePlayer == myName) {
     if ($(this).hasClass('on')) {
       $(this).removeClass('on');
     } else {
-      if ($('td.on').length <3) {
+      if ($('.cell.on').length <3) {
         $(this).addClass('on');
       }
     }
-    if ($('td.on').length == 3) {
+    if ($('.cell.on').length == 3) {
       $submitButton.addClass('ready');
       setTimeout(delayedSubmit,400);
     }
@@ -267,13 +283,13 @@ function declarePress() {
 }
 
 function delayedSubmit() {
-  if ($('td.on').length == 3 && !gamePaused) {
+  if ($('.cell.on').length == 3 && !gamePaused) {
     $submitButton.trigger(myDown);
   }
 }
 
 function getSelectedBoxes() {
-  var boxes = $('td.on');
+  var boxes = $('.cell.on');
   var cells = [];
   boxes.each(function(index) {
     cells.push($(this).attr('id'));
@@ -556,7 +572,7 @@ function updateBoard(cards) {
     var oldCard = cards[i];
     var index = board.indexOf(oldCard);
     board[index] = newCards[i];
-    var $cell = $('#c'+oldCard).parents('td');
+    var $cell = $('#c'+oldCard).parents('.cell');
     cells.push($cell.attr('id'));
     $('#c'+oldCard).remove();
   }
@@ -599,7 +615,7 @@ $submitButton.on(myDown,function (event) {
         sendMessage('admire',myName,cards);
       updateScores(scores);
     } else {
-      $("td").removeClass('on');
+      $(".cell").removeClass('on');
     }
   } 
   else {
@@ -607,7 +623,7 @@ $submitButton.on(myDown,function (event) {
     console.log(cards);
     sendMessage('found',cards);
     } else {
-      $("td").removeClass('on');
+      $(".cell").removeClass('on');
   }  
   }
 })
@@ -616,9 +632,9 @@ function admireSet(cards,sender) {
   console.log(cards);
   gamePaused = true;
   failedFind();
-  $('td').removeClass('on');
+  $('.cell').removeClass('on');
   for (var i=0;i<cards.length;i++) {
-    var $cell = $('#c'+cards[i]).parents('td');
+    var $cell = $('#c'+cards[i]).parents('.cell');
     $cell.addClass('on');
   }
   $board.addClass('highlighted');
@@ -648,7 +664,7 @@ function moveOn() {
       var cards = getCards(cells);
       updateBoard(cards);
       $board.removeClass('highlighted');
-      $("td").removeClass('on');
+      $(".cell").removeClass('on');
       $overlay.html('');
       $overlay.hide();
       confirmSetPresenceOrEnd();
@@ -660,7 +676,7 @@ function moveOn() {
     } else {
       $('#reminder').show();
       $board.removeClass('highlighted');
-      $("td").removeClass('on');
+      $(".cell").removeClass('on');
       $('#overlay').html('');
       $overlay.hide();
       activePlayer = '';
