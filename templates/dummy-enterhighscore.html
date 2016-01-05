@@ -1,0 +1,62 @@
+<html><head>
+    <title>My Set Game</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/clean.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script><style type="text/css"></style>
+  </head>
+  <body>
+    <div id="pregame" style="display: none;">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game!</p>
+        <span>Easy<input id="difficulty" type="range" min="6" max="24">Hard</span><br>
+        <p>
+          (<input id="super-difficult" type="checkbox"> Harder Still)</p>
+        <p>First to get 9 points is the winner!</p>
+<!--        <span>First to 9<input id="gametype" type="range" min="0" max="1" value="0">Bitter End</span><br>-->
+        <button id="start-button" onclick="">Start the Game</button>
+        <div id="pregame-bottom">
+          <p>scoring: you get one point for every set, lose half a point for a false call</p>
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set, 'g' to lock in your choice<br>'r' reshuffles the deck</p>
+          <p><a class="button" href="/rules">How to Play</a><a class="button" href="/scores">See High Scores</a></p>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div id="colOne" style="display: block;">
+    <div id="topbar">
+      <div><p id="timer">Time: 4:20</p></div>
+      <div><p id="score-info">Score: 27816</p></div>
+      <div><p id="countdown" style="display: none;">5</p></div>
+    </div>
+    <div id="middle" style="display: block;">
+      <div id="board" class="">
+      <div id="A1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0112" alt="card" src="/img/12.png"></a></div></div><div id="B1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2000" alt="card" src="/img/00.png"></a></div></div><div id="C1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one empty" id="c0002" alt="card" src="/img/02.png"></a></div></div><div id="D1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0212" alt="card" src="/img/12.png"></a></div></div><div id="A2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1200" alt="card" src="/img/00.png"></a></div></div><div id="B2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2012" alt="card" src="/img/12.png"></a></div></div><div id="C2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two empty" id="c1022" alt="card" src="/img/22.png"></a></div></div><div id="D2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2122" alt="card" src="/img/22.png"></a></div></div><div id="A3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2111" alt="card" src="/img/11.png"></a></div></div><div id="B3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2100" alt="card" src="/img/00.png"></a></div></div><div id="C3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0202" alt="card" src="/img/02.png"></a></div></div><div id="D3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two empty" id="c1020" alt="card" src="/img/20.png"></a></div></div></div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="" style="display: none;" class="">Go!</button>
+        <button id="declare-set" type="button" onclick="" style="display: none;">SET!</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+      <div id="game-info">
+        <div id="all-scores">
+          <p id="your-score">You: 9.5</p>
+          <p id="opponent-score">Computer: 4</p>
+        </div>
+        <div id="board-info">
+          <p id="remaining">Cards remaining: 39</p>
+          <p id="sets-on-board">Sets on board: 3</p>
+        </div>
+      </div>
+      <div id="button-holder">
+        <button type="button" id="reshuffle" onclick="">Reshuffle</button>
+        <button type="button" id="replay" onclick="">Restart!</button>
+      </div>
+    </div>
+    </div>
+    <script>var lowScore = 3937</script>
+<!--    <script src="/js/table.js"></script>-->
+    <div id="overlay" style="display: none;"><h1>YOU WIN!</h1></div>
+   
+<div id="name-prompt"><div><p>Congratulations! You got a high score!</p><p>Enter your name</p><input id="player-name" value=""><button id="submit-name">Go!</button><button id="no-submit">Cancel</button></div></div></body></html>

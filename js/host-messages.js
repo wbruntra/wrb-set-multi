@@ -58,10 +58,16 @@ onMessage = function(m) {
     } else {
       console.log('Declare ignored');
     }
+  } else if (message.action == 'sendSelection') {
+    if (activePlayer == sender) {
+      var cards = message.cards;
+      highlightCells(cards);
+      sendMessage('updateSelection',sender,cards);
+    }
   } else if (message.action == 'found') {
     if (activePlayer == sender) {
         activePlayer = '';
-        var cards = message.cards
+        var cards = message.cards;
         scores[sender] += 1;
         sendMessage('admire',sender,cards);
         admireSet(cards,sender);

@@ -11,8 +11,10 @@
       <div id="pregame-content">
         <p>Welcome to the amazing four-dimensional matching game!</p>
         <span>Easy<input id="difficulty" type="range" min="6" max="24">Hard</span><br>
-        <p>First to get 9 points is the winner, or play to the bitter end!</p>
-        <span>First to 9<input id="gametype" type="range" min="0" max="1" value="0">Bitter End</span><br>
+        <p>
+          (<input id="super-difficult" type="checkbox"> Harder Still)</p>
+        <p>First to get 9 points is the winner!</p>
+<!--        <span>First to 9<input id="gametype" type="range" min="0" max="1" value="0">Bitter End</span><br>-->
         <button id="start-button" onclick="">Start the Game</button>
         <div id="pregame-bottom">
           <p>scoring: you get one point for every set, lose half a point for a false call</p>
@@ -24,11 +26,11 @@
         
       </div>
     </div>
+    <div id="colOne">
     <div id="topbar">
-      <div id="timer"></div>
-      <div id="reminder"><p>Hit &quot;s&quot; when you see a set!</p></div>
-      <div id="declaration"><p>Hit &quot;g&quot; to lock in!</p></div>
-      <div id="countdown"></div>
+      <div><p id="timer"></p></div>
+      <div><p id="score-info"></p></div>
+      <div><p id="countdown">-</p></div>
     </div>
     <div id="middle">
       <div id="board">
@@ -36,22 +38,26 @@
       <div id="controls">
         <button id="submit" type="button" onclick="">Go!</button>
         <button id="declare-set" type="button" onclick="">SET!</button>
-        <button id="score-info" type="button" onclick="">Score: 8000</button>
       </div>
     </div>
     <div id="bottom-row">
       <div id="game-info">
-        <span id="your-score"></span>
-        <span id="opponent-score"></span><br>
-        <span id="remaining"></span>
-        <span id="sets-on-board"></span>
+        <div id="all-scores">
+          <p id="your-score"></p>
+          <p id="opponent-score"></p>
+        </div>
+        <div id="board-info">
+          <p id="remaining"></p>
+          <p id="sets-on-board"></p>
+        </div>
       </div>
-      <div id="bottom">
-        <div id="play-again"><button type="button" id="replay" onclick="">Restart!</button></div>
+      <div id="button-holder">
+        <button type="button" id="reshuffle" onclick="">Reshuffle</button>
+        <button type="button" id="replay" onclick="">Restart!</button>
       </div>
+    </div>
     </div>
     <script>var lowScore = {{ lowest_score }}</script>
     <script src="/js/table.js"></script>
-<!--    <script src="/js/images.js"></script>-->
   </body> 
 </html>

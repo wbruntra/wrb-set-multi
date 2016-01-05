@@ -1,0 +1,78 @@
+<html><html><head>
+    <title>My Set Game</title>
+    <script src="/_ah/channel/jsapi"></script><style type="text/css"></style>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/clean.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  
+  <body>
+    <div id="pregame" style="display: none;">
+      <div id="pregame-content">
+        <p>Welcome to the amazing four-dimensional matching game, William! (<a href="/host">change</a>)</p>
+        <p>Send your friends <a href="/join?g=8978">this</a> link!</p>
+        <p>(http://wrb-set-multi.appspot.com/join?g=8978)</p>
+        <p>Or give them this code: 8978 </p>
+        <button id="start-button" onclick="">Start the Game</button>
+<!--        <button id="add-computer" onclick="">Add Computer</button>-->
+        <div id="pregame-bottom">
+          <p><strong>keyboard tips</strong></p>
+          <p>hit 's' to call out your set,'r' reshuffles the deck</p>
+        <h3>Players so far:</h3>
+  <ul id="pregame-players"><li>William</li><li>James</li><li>Joarmes</li><li>Fredo</li></ul>
+        </div>  
+        </div>
+        
+      </div>
+    
+  <div id="colOne" style="display: block;">
+    <div id="topbar" style="display: none;">
+      <div id="timerDiv"><p id="timer">Time: 4:49</p></div>
+      <div id="reminder" style="display: block;"><p>Hit "s" when you see a set!</p></div>
+      <div id="declaration" class="running" style="display: none;">James called SET!</div>
+      <div id="countdownDiv"><p id="countdown" class="">0</p></div>
+    </div>
+    <div id="middle" style="display: block;">
+      <div id="board" class="">
+      <div id="A1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0211" alt="card" src="/img/11.png"></a></div></div><div id="B1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two solid" id="c1202" alt="card" src="/img/02.png"></a></div></div><div id="C1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0221" alt="card" src="/img/21.png"></a></div></div><div id="D1" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one solid" id="c0210" alt="card" src="/img/10.png"></a></div></div><div id="A2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three solid" id="c2202" alt="card" src="/img/02.png"></a></div></div><div id="B2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2101" alt="card" src="/img/01.png"></a></div></div><div id="C2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite one striped" id="c0102" alt="card" src="/img/02.png"></a></div></div><div id="D2" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three empty" id="c2002" alt="card" src="/img/02.png"></a></div></div><div id="A3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2120" alt="card" src="/img/20.png"></a></div></div><div id="B3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite three striped" id="c2100" alt="card" src="/img/00.png"></a></div></div><div id="C3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two empty" id="c1010" alt="card" src="/img/10.png"></a></div></div><div id="D3" class="cell"><div class="box"><a class="stretchy no-limit" href="#"><img class="spacer" src="/img/spacer.png" alt="spacer"><img class="sprite two striped" id="c1102" alt="card" src="/img/02.png"></a></div></div></div>
+      <div id="controls">
+        <button id="submit" type="button" onclick="" style="display: none;" class="">Go!</button>
+        <button id="declare-set" type="button" onclick="" style="display: none;">SET!</button>
+      </div>
+    </div>
+    <div id="bottom-row">
+      <div id="game-info">
+        <div id="all-scores"><p id="player-0-score">William: 0</p><p id="player-1-score">James: 0</p><p id="player-2-score">Joarmes: 0</p><p id="player-3-score">Fredo: 0</p>
+        </div>
+        <div id="board-info">
+          <p id="remaining">Cards remaining: 81</p>
+          <p id="sets-on-board">Sets on board: 1</p>
+        </div>
+      </div>
+      <div id="button-holder">
+        <button type="button" id="reshuffle" onclick="">Reshuffle</button>
+        <button type="button" id="replay" onclick="">Restart!</button>
+      </div>
+    </div>
+    </div>
+      <div id="colTwo">
+        <div id="chat-box"><h3>History</h3><p class="room-event">James has joined.</p><p class="room-event">Joarmes has joined.</p><p class="room-event">Fredo has joined.</p></div>
+      <form id="chat-msg" action="javascript:void(0);" autocomplete="off">
+        <input id="my-msg" type="text" name="chat">
+        <input type="submit" hidden="">
+      </form>
+    </div>
+      <script>
+          soloMatch = false;
+          myName = "William";
+          game_key = "8978";
+          token = "62fd00a9f3ca87d6a7c83d9c6b7b95a2-channel-2719876113-1452019866-d2d56de508a34cef9207f3dab506c139";
+          isHost = ("yes"=="yes");
+    </script>
+<!--    <script src="/js/true-combined.js"></script>-->
+    <div id="overlay" style="display: none;"></div>
+<!--    <script src="/js/host-messages.js"></script>-->
+<!--    <script src="/js/channel.js"></script>-->
+<!--    <script src="/js/images.js"></script>-->
+  
+</body></html>

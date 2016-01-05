@@ -15,6 +15,10 @@ computerEnabled = false;
 
 $startButton = $('#start-button');
 
+$('#topbar').hide();
+
+$('#colOne').hide();
+
 if (isHost) {
   hostName = myName;
 }
@@ -259,12 +263,24 @@ $(".cell").on(myDown,function(event) {
         $(this).addClass('on');
       }
     }
-    if ($('.cell.on').length == 3) {
+    sendSelectionUpdate();
+    if ($('.cell.on').length == 3) { 
       $submitButton.addClass('ready');
       setTimeout(delayedSubmit,400);
     }
   }
 });
+
+function sendSelectionUpdate() {
+  var cells = getSelectedBoxes();
+  var cards = getCards(cells);
+  if (isHost) {
+    sendMessage('updateSelection',myName,cards);
+  }
+  else {
+    sendMessage('sendSelection',cards)
+  }
+}
 
 //Allow board touch to declare SET
 
@@ -462,6 +478,7 @@ $startButton.on(myDown,function(e) {
   makeScoreboard(players);
   $('#declaration').hide();
   $('#pregame').hide();
+  $('#colOne').show();
   $('#middle').show();
   gameStarted = true;
   if (isHost) {
@@ -628,15 +645,26 @@ $submitButton.on(myDown,function (event) {
   }
 })
 
+function highlightCells(cards) {
+  $('.cell').removeClass('on');
+  if (cards) {
+    for (var i=0;i<cards.length;i++) {
+      var $cell = $('#c'+cards[i]).parents('.cell');
+      $cell.addClass('on');
+    }
+    if (cards.length == 3 && !testSet(cards)) {
+      setTimeout(function() {
+        $('.cell').removeClass('on');
+      },600);
+    }
+  }
+}
+
 function admireSet(cards,sender) {
   console.log(cards);
   gamePaused = true;
   failedFind();
-  $('.cell').removeClass('on');
-  for (var i=0;i<cards.length;i++) {
-    var $cell = $('#c'+cards[i]).parents('.cell');
-    $cell.addClass('on');
-  }
+  highlightCells(cards);
   $board.addClass('highlighted');
   createRecord(sender);
   if (sender == "Restarting Game!") {

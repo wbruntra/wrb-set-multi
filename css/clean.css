@@ -6,6 +6,7 @@
   background:#fff;
   text-align:center;
   margin-left:-5px;
+  border: 2px solid black;
 }
 
 #pregame-content {
@@ -75,6 +76,11 @@ body {
   background-color:white;
 }
 
+#name-prompt {
+  font-size:1.2em;
+  opacity:.99;
+}
+
 #name-prompt div {
   position:absolute;
   top:30%;
@@ -84,6 +90,23 @@ body {
   padding: 20px;
   color: rgb(39, 8, 4);
   border-style: solid;
+  text-align:center;
+}
+
+#name-prompt p {
+  text-align:center;
+}
+
+#name-prompt button {
+  padding: 7px 10px ;
+  background-color: #4bc970;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  width: 85px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  margin: 0 5px;
 }
 
 #overlay img {
@@ -107,7 +130,7 @@ body {
 /* all the stuff in column one */
 
 #topbar {
-  display:none;
+  margin-bottom:15px;
 }
 
 #topbar div{
@@ -120,7 +143,10 @@ body {
 }
 
 #topbar div p {
-  margin:auto;
+  margin:5px 20px;
+  border:2px solid black;
+  border-radius:5px;
+  background-color:bisque;
   padding:10px;
   text-align:center;
 }
@@ -137,7 +163,7 @@ body {
   border-radius:8px;
   overflow:auto;
   width:732px;
-  margin-top:10px;
+  margin-top:5px;
 }
 
 #board div {
@@ -151,6 +177,7 @@ body {
 }
 
 #board {
+  margin-top:10px;
   overflow:auto;
   background-color:#a93232;
   border:5px solid black;
@@ -215,6 +242,7 @@ button, div#timer, #score-info {
 
 #all-scores p {
   width:45%;
+  float:left;
 }
 
 #button-holder {
@@ -340,7 +368,7 @@ max-height:100%;
   bottom:0px;
   right:0;
   overflow:auto;
-  font-size:.7em;
+  font-size:.9em;
   background-color:beige;
   min-height:100%;
   border-left: 2px solid black;

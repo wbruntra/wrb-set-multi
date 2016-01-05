@@ -54,6 +54,13 @@ onMessage = function(m) {
       $('#declaration').text(actor+' called SET!');
       activePlayer = actor;
   }
+  else if (message.action == 'updateSelection') {
+      var actor = message.actor;
+      if (actor != myName && activePlayer == actor) {
+        cards = message.cards;
+        highlightCells(cards);
+      }
+  }
   else if (action == 'admire') {
       cards = message.cards;
       admireSet(cards,actor);

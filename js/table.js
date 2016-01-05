@@ -35,6 +35,8 @@ var playingTo = 9;
 
 var $startButton = $('#start-button');
 
+$('#countdown').hide();
+$('#colOne').hide();
 
 function fill_td(td, cardName) {
   //console.log(td +" ,"+ cardName);
@@ -61,10 +63,14 @@ function fill_td(td, cardName) {
 
 $startButton.on(myDown,function(e) {
   console.log("Game started!");
-  guessTime = 36000/parseInt($('#difficulty').val());
-  longGame = ($('#gametype').val() == "1") ? true : false;
+  difficultyMultiplier = ($('#super-difficult').is(':checked')) ? 2 : 1;
+  difficultyLevel = difficultyMultiplier * parseInt($('#difficulty').val());
+  guessTime = 36000/difficultyLevel;
+//  longGame = ($('#gametype').val() == "1") ? true : false;
+  longGame = false;
   $('#declaration').hide();
   $('#pregame').hide();
+  $('#colOne').show();
   $('#middle').show();
   updateInfo();
   gameTime = setInterval(countup,1000);
@@ -316,7 +322,7 @@ function updateBoard (cards) {
     for (var i=0;i<3;i++) {
       var newCard = deck.pop();
       board.push(newCard);
-      console.log(newCard);
+//      console.log(newCard);
       cellName = "#"+cells[i];
       fill_td(cellName,newCard);
     }
@@ -366,7 +372,7 @@ function promptName () {
   var $nameForm = $('<div>');
   $nameForm.append($('<p>Congratulations! You got a high score!</p>'));
   $nameForm.append($('<p>Enter your name</p>'));
-  $nameForm.append($('<input id="player-name" value="'+getCookie('player')+'">'));
+  $nameForm.append($('<p><input id="player-name" value="'+getCookie('player')+'"></p>'));
   $nameForm.append($('<button id="submit-name">Go!</button>'));
   $nameForm.append($('<button id="no-submit">Cancel</button>'));
   $nameDiv.append($nameForm);
@@ -395,7 +401,7 @@ function promptName () {
 function calculateScore () {
   var longMultiplier = longGame ? 1 : 2.5;
   var difference = yourScore-opponentScore
-  var difficulty = parseInt($('#difficulty').val())
+  var difficulty = difficultyLevel;
   var finalScore = Math.floor(7*difference*Math.pow(difficulty,2)*longMultiplier);
   finalScore = finalScore < 0 ? 0: finalScore;
   return finalScore;
@@ -492,8 +498,8 @@ function deckContainsSet(deck) {
 
 function updateInfo() {
   $remain.text('Cards remaining: '+deck.concat(board).length);
-  $yourScore.text("Your Points: "+yourScore);
-  $opponentScore.text("Opponent Points: "+opponentScore);
+  $yourScore.text("You: "+yourScore);
+  $opponentScore.text("Computer: "+opponentScore);
   $onboard.text("Sets on board: "+countSets(board));
   $('#score-info').text("Score: "+calculateScore());
   return;
@@ -571,7 +577,7 @@ function computerTurn() {
   if (!declared && !gamePaused) {
     console.log("Guess at "+seconds);
     var cards = computerSearch(board);
-    console.log("Tried "+choice);
+//    console.log("Tried "+choice);
     if (cards != false) {
       console.log('Computer finds set');
       opponentScore += 1;
@@ -606,7 +612,7 @@ function declareSet() {
   console.log('set declared');
   $('#board').addClass('active');
   declared = true;
-  $submitButton.show();
+//  $submitButton.show();
   $setButton.hide();
   window.secondsLeft = 6;
   setCountdown();
@@ -616,12 +622,11 @@ function declareSet() {
 function setCountdown() {
   secondsLeft = window.secondsLeft;
   var $counter =  $('#countdown');
-  var $counter = $('#countdown');
   var $declaration = $('#declaration');
   $('#declaration').show();
   $declaration.addClass('running');
   $counter.text(secondsLeft);
-  $counter.addClass('running');
+  $counter.show();
 }
 
 function countTimer() {
@@ -643,14 +648,17 @@ function failedFind() {
   $('#reminder').show();
   $('#declaration').hide();
   declared= false;
-  $setButton.show();
+//  $setButton.show();
   $submitButton.hide();
-  $('#countdown').removeClass('running');
-//  clearInterval(window.timerId);
+  $('#countdown').hide();
+  clearInterval(window.timerId);
   $('.cell.on').removeClass('on');
 }
 
 var $setButton = $('#declare-set');
+
+$setButton.hide();
+
 $setButton.on(myDown,function (e) {
   e.stopPropagation();
   e.preventDefault();
